@@ -1,0 +1,87 @@
+Home
+==================
+=  {i} intentor  =
+=     YAB AI     =
+=                =
+=  > I Start     =
+=    I Settings  =
+=                =
+=           v0.1 =
+==================
+
+Settings
+==================
+= I     Settings =
+= -------------- =
+= > I Motors     =
+=   I Sensors    =
+=   I Parameters =
+=   I Speed      =
+=                =
+==================
+
+Settings - Motors
+==================
+= I       Motors =
+= -------------- =
+= > I Left     A =
+=   I Right    B =
+=                =
+=                =
+=                =
+==================
+
+Settings - Sensors
+==================
+= I      Sensors =
+= -------------- =
+= > I Light    1 =
+=   I Sonar    2 =
+=   I Touch    3 =
+=                =
+=                =
+==================
+
+Settings - Parameters
+==================
+= I   Parameters =
+= -------------- =
+= > I Timer    5 =
+=   I Color    W =
+=                =
+=                =
+=                =
+==================
+
+Settings - Speed
+==================
+= I        Speed =
+= -------------- =
+= > >>      1080 =
+=   <<      1080 =
+=   O       1080 =
+=                =
+=                =
+==================
+
+Starting program
+==================
+= IBAT           =
+=                =
+= Starting... 9  =
+=                =
+=                =
+=                =
+= Press to stop  =
+==================
+
+Running program
+==================
+= IBAT           =
+=                =
+= Searching...   =
+=                =
+=                =
+=                =
+= Press to stop  =
+==================
