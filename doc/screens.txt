@@ -1,11 +1,11 @@
-Home
+< Home
 ==================
 =  {i} intentor  =
-=     YAB AI     =
+=        YAB AI  =
 =                =
-=  > I Start     =
-=    I Settings  =
-=                =
+=  > Start       =
+=    Settings    =
+=    Exit        =
 =           v0.1 =
 ==================
 
@@ -13,10 +13,10 @@ Settings
 ==================
 = I     Settings =
 = -------------- =
-= > I Motors     =
-=   I Sensors    =
-=   I Parameters =
-=   I Speed      =
+= > Motors       =
+=   Sensors      =
+=   Parameters   =
+=   Speed        =
 =                =
 ==================
 
@@ -24,8 +24,8 @@ Settings - Motors
 ==================
 = I       Motors =
 = -------------- =
-= > I Left     A =
-=   I Right    B =
+= > Left       A =
+=   Right      B =
 =                =
 =                =
 =                =
@@ -35,9 +35,9 @@ Settings - Sensors
 ==================
 = I      Sensors =
 = -------------- =
-= > I Light    1 =
-=   I Sonar    2 =
-=   I Touch    3 =
+= > Light      1 =
+=   Sonar      2 =
+=   Touch      3 =
 =                =
 =                =
 ==================
@@ -46,8 +46,9 @@ Settings - Parameters
 ==================
 = I   Parameters =
 = -------------- =
-= > I Timer    5 =
-=   I Color    W =
+= > Timer     10 =
+=   Color      W =
+=   Sonar    170 =
 =                =
 =                =
 =                =
@@ -57,9 +58,9 @@ Settings - Speed
 ==================
 = I        Speed =
 = -------------- =
-= > >>      1080 =
-=   <<      1080 =
-=   O       1080 =
+= > Front   1080 =
+=   Back    1080 =
+=   Rotate  1080 =
 =                =
 =                =
 ==================
