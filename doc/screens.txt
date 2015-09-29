@@ -17,7 +17,7 @@ Settings
 =   Sensors      =
 =   Parameters   =
 =   Speed        =
-=                =
+=   Back         =
 ==================
 
 Settings - Motors
@@ -26,7 +26,7 @@ Settings - Motors
 = -------------- =
 = > Left       A =
 =   Right      B =
-=                =
+=   Back         =
 =                =
 =                =
 ==================
@@ -38,7 +38,7 @@ Settings - Sensors
 = > Light      1 =
 =   Sonar      2 =
 =   Touch      3 =
-=                =
+=   Back         =
 =                =
 ==================
 
@@ -49,8 +49,7 @@ Settings - Parameters
 = > Timer     10 =
 =   Color      W =
 =   Sonar    170 =
-=                =
-=                =
+=   Back         =
 =                =
 ==================
 
@@ -61,7 +60,7 @@ Settings - Speed
 = > Front   1080 =
 =   Back    1080 =
 =   Rotate  1080 =
-=                =
+=   Back         =
 =                =
 ==================
 

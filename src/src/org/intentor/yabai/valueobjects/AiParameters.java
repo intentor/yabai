@@ -36,7 +36,7 @@ public class AiParameters {
 	 * 
 	 * @return The default parameters.
 	 */
-	public static AiParameters Default() {
+	public static AiParameters createDefault() {
 		AiParameters parameters = new AiParameters();
 		
 		parameters.motorLeft = MotorPort.A;
