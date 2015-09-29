@@ -2,6 +2,7 @@ package org.intentor.yabai.states;
 
 import org.intentor.yabai.constants.StateName;
 import org.intentor.yabai.constants.Asset;
+import org.intentor.yabai.core.data.FileManager;
 
 /**
  * Settings home state.
@@ -9,10 +10,13 @@ import org.intentor.yabai.constants.Asset;
 public class SettingsState extends OptionsState {
 	/**
 	 * Creates a new instance of the class.
+	 * 
+	 * @param fileManager File manager.
 	 */
-	public SettingsState() {
+	public SettingsState(FileManager fileManager) {
 		super("Settings", Asset.ICON_SETTINGS,
-			new String[] { " Motors", " Sensors", " Parameters", " Speed", " Back" });
+			new String[] { " Motors", " Sensors", " Parameters", " Speed", " Back" },
+			fileManager);
 	}
 	
 	/**

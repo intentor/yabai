@@ -2,6 +2,7 @@ package org.intentor.yabai.states;
 
 import org.intentor.yabai.constants.Asset;
 import org.intentor.yabai.constants.StateName;
+import org.intentor.yabai.core.data.FileManager;
 
 /**
  * Settings/Motors ports state.
@@ -9,10 +10,13 @@ import org.intentor.yabai.constants.StateName;
 public class MotorsState extends OptionsState {
 	/**
 	 * Creates a new instance of the class.
+	 * 
+	 * @param fileManager File manager.
 	 */
-	public MotorsState() {
-		super("Motors", Asset.ICON_MOTORS,
-			new String[] { " Left", " Right", " Back" });
+	public MotorsState(FileManager fileManager) {
+		super("Motors", Asset.ICON_MOTORS, 
+			new String[] { " Left", " Right", " Back" },
+			fileManager);
 	}
 	
 	/**

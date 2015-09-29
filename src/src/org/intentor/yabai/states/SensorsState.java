@@ -2,6 +2,7 @@ package org.intentor.yabai.states;
 
 import org.intentor.yabai.constants.Asset;
 import org.intentor.yabai.constants.StateName;
+import org.intentor.yabai.core.data.FileManager;
 
 /**
  * Settings/Sensors ports state.
@@ -9,10 +10,13 @@ import org.intentor.yabai.constants.StateName;
 public class SensorsState extends OptionsState {
 	/**
 	 * Creates a new instance of the class.
+	 * 
+	 * @param fileManager File manager.
 	 */
-	public SensorsState() {
+	public SensorsState(FileManager fileManager) {
 		super("Sensors", Asset.ICON_SENSORS,
-			new String[] { " Light", " Sonar", " Touch", " Back" });
+			new String[] { " Light", " Sonar", " Touch", " Back" },
+			fileManager);
 	}
 	
 	/**

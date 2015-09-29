@@ -1,6 +1,8 @@
 package org.intentor.yabai.states;
 
 import org.intentor.yabai.core.State;
+import org.intentor.yabai.core.data.FileManager;
+import org.intentor.yabai.valueobjects.AiParameters;
 import javax.microedition.lcdui.Graphics;
 import javax.microedition.lcdui.Image;
 import lejos.nxt.LCD;
@@ -16,8 +18,12 @@ public abstract class OptionsState extends State {
 	private final Image icon;
 	/** The view menu items. */
 	private final String[] menuItems;
-	/** The text menu. */
+	/** The view menu items. */
 	private TextMenu menu;
+	/** File manager. */
+	protected FileManager file;
+	/** AI parameters. */
+	protected AiParameters parameters;
 	
 	/**
 	 * Creates a new instance of the class.
@@ -25,11 +31,16 @@ public abstract class OptionsState extends State {
 	 * @param title View title.
 	 * @param icon View icon. Should be 16x16 pixels.
 	 * @param menuItems The view menu items.
+	 * @param file File manager.
 	 */
-	public OptionsState(String title, Image icon, String[] menuItems) {		
+	public OptionsState(String title, Image icon, String[] menuItems, FileManager file) {		
 		this.title = title;
 		this.icon = icon;
 		this.menuItems = menuItems;
+		this.file = file;
+		
+		String data = this.file.read();
+		this.parameters = AiParameters.createFromString(data);
 	}
 	
 	@Override

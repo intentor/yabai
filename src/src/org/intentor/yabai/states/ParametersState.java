@@ -2,6 +2,7 @@ package org.intentor.yabai.states;
 
 import org.intentor.yabai.constants.Asset;
 import org.intentor.yabai.constants.StateName;
+import org.intentor.yabai.core.data.FileManager;
 
 /**
  * Settings/Parameters state.
@@ -9,10 +10,13 @@ import org.intentor.yabai.constants.StateName;
 public class ParametersState extends OptionsState {
 	/**
 	 * Creates a new instance of the class.
+	 * 
+	 * @param fileManager File manager.
 	 */
-	public ParametersState() {
+	public ParametersState(FileManager fileManager) {
 		super("Parameters", Asset.ICON_PARAMETERS,
-			new String[] { " Timer", " Color", " Sonar", " Back" });
+			new String[] { " Timer", " Color", " Sonar", " Back" },
+			fileManager);
 	}
 	
 	/**

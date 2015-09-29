@@ -2,6 +2,7 @@ package org.intentor.yabai.states;
 
 import org.intentor.yabai.constants.Asset;
 import org.intentor.yabai.constants.StateName;
+import org.intentor.yabai.core.data.FileManager;
 
 /**
  * Settings/Speed configurations view.
@@ -9,10 +10,13 @@ import org.intentor.yabai.constants.StateName;
 public class SpeedState extends OptionsState {
 	/**
 	 * Creates a new instance of the class.
+	 * 
+	 * @param fileManager File manager.
 	 */
-	public SpeedState() {
+	public SpeedState(FileManager fileManager) {
 		super("Speed", Asset.ICON_SPEED,
-			new String[] { " Front", " Back", " Rotate", " Back" });
+			new String[] { " Front", " Back", " Rotate", " Back" },
+			fileManager);
 	}
 	
 	/**
