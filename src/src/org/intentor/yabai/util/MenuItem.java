@@ -24,7 +24,7 @@ public class MenuItem {
 	 * @return The label value.
 	 */
 	public String getLabel() {
-		return this.label;
+		return " " + this.label;
 	}
 	
 	/**
