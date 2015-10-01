@@ -8,6 +8,8 @@ import lejos.nxt.Button;
 public class MenuItem {
 	/** Label prefix. */
 	protected static final String PREFIX = " ";
+	/** Label display width. */
+	protected static final int LABEL_WIDTH = 15;
 	
 	/** Item's label. */
 	protected String label;
@@ -64,6 +66,21 @@ public class MenuItem {
 	 * @return The formatted label.
 	 */
 	protected final String formatLabel(String left, String right) {
-		return PREFIX + left + " " + right;
+		if (right.equals("")) {
+			return PREFIX + left;
+		} else {
+			StringBuilder builder = new StringBuilder();
+			builder.append(PREFIX);
+			builder.append(left);
+			
+			int spaces = LABEL_WIDTH - builder.length() - right.length();
+			for (int index = 0; index < spaces; index++) {
+				builder.append(" ");
+			}
+			
+			builder.append(right);
+			
+			return builder.toString();
+		}
 	}
 }
