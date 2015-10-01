@@ -19,7 +19,7 @@ public class Menu {
 	/** Optional menu title displayed immediately above the list of items. */
 	protected String _title;	
 	/** Array of items to be displayed ;set by constructor, used by select(). */
-	protected MenuTextItem[] _items;	
+	protected MenuItem[] _items;	
 	/** Effective length of items array  - number of items before null.  */
 	protected int _length;	
 	/** Index of the list item at the top of the list; set by constructor, used by select(). */
@@ -38,14 +38,14 @@ public class Menu {
 	/**
 	 * This constructor sets location of the top row of the item list to row 0 of the display.
 	 */
-	public Menu(MenuTextItem[] items) {
+	public Menu(MenuItem[] items) {
 		this(items, 0, null);
 	}
 	
 	/**
 	 * This constructor allows specification location of the item list .
 	 */
-	public Menu (MenuTextItem[] items, int topRow) {
+	public Menu (MenuItem[] items, int topRow) {
 		this(items, topRow, null);
 	}
 	
@@ -55,7 +55,7 @@ public class Menu {
 	 * 
 	 * @param items  -  string array containing the menu items. No items beyond the first null will be displayed.
 	 */	
-	public Menu(MenuTextItem[] items, int topRow, String title) {
+	public Menu(MenuItem[] items, int topRow, String title) {
 		if (topRow < 0 || (topRow == 0 && title != null))
 			throw new IllegalArgumentException("illegal topRow argument");
 		
@@ -83,7 +83,7 @@ public class Menu {
 	 * 
 	 * @return the array of items.
 	 */
-	public MenuTextItem[] getItems() {
+	public MenuItem[] getItems() {
 	   return _items;
 	}
 	
@@ -92,7 +92,7 @@ public class Menu {
 	 * 
 	 * @param items
 	 */
-	public void setItems(MenuTextItem[] items) {
+	public void setItems(MenuItem[] items) {
 		_items = items;
 		
 		if (items == null) {

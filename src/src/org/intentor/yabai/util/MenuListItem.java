@@ -5,7 +5,7 @@ import lejos.nxt.Button;
 /**
  * Displays a value from a text list and allows navigation through its values.
  */
-public class MenuListItem extends MenuTextItem {
+public class MenuListItem extends MenuItem {
 	/** Currently selected value. */
 	private String value;
 	/** Item's list. */

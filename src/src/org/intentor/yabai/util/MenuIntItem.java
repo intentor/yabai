@@ -10,7 +10,7 @@ import lejos.nxt.Button;
 /**
  * Displays an int value (as string) and allows increment/decrement of the value.
  */
-public class MenuIntItem extends MenuTextItem {
+public class MenuIntItem extends MenuItem {
 	/** The value. */
 	private int value;
 	/** The minimum value. */

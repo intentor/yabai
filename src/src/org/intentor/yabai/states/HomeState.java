@@ -6,17 +6,17 @@ import org.intentor.yabai.constants.StateName;
 import org.intentor.yabai.constants.Asset;
 import org.intentor.yabai.core.State;
 import org.intentor.yabai.util.Menu;
-import org.intentor.yabai.util.MenuTextItem;
+import org.intentor.yabai.util.MenuItem;
 
 /**
  * Home state.
  */
 public class HomeState extends State {
 	/** The view menu items. */
-	private final MenuTextItem[] menuItems = { 
-		new MenuTextItem("Start"),
-		new MenuTextItem("Settings"),
-		new MenuTextItem("Exit")
+	private final MenuItem[] menuItems = { 
+		new MenuItem("Start"),
+		new MenuItem("Settings"),
+		new MenuItem("Exit")
 	};
 	
 	/** Program version. */

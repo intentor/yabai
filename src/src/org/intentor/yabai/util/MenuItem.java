@@ -5,7 +5,7 @@ import lejos.nxt.Button;
 /**
  * Text menu item.
  */
-public class MenuTextItem {
+public class MenuItem {
 	/** Item's label. */
 	protected String label;
 	
@@ -14,7 +14,7 @@ public class MenuTextItem {
 	 * 
 	 * @param label Item's label.
 	 */
-	public MenuTextItem(String label) {
+	public MenuItem(String label) {
 		this.label = label;
 	}
 	

@@ -8,7 +8,7 @@ import lejos.nxt.LCD;
 import org.intentor.yabai.core.State;
 import org.intentor.yabai.core.data.FileManager;
 import org.intentor.yabai.util.Menu;
-import org.intentor.yabai.util.MenuTextItem;
+import org.intentor.yabai.util.MenuItem;
 
 /**
  * Options base state.
@@ -19,7 +19,7 @@ public abstract class OptionsState extends State {
 	/** View icon. Should be 16x16 pixels. */
 	private final Image icon;
 	/** The view menu items. */
-	private final MenuTextItem[] menuItems;
+	private final MenuItem[] menuItems;
 	/** The view menu items. */
 	private Menu menu;
 	/** File manager. */
@@ -35,7 +35,7 @@ public abstract class OptionsState extends State {
 	 * @param menuItems The view menu items.
 	 * @param file File manager.
 	 */
-	public OptionsState(String title, Image icon, MenuTextItem[] menuItems, FileManager file) {		
+	public OptionsState(String title, Image icon, MenuItem[] menuItems, FileManager file) {		
 		this.title = title;
 		this.icon = icon;
 		this.menuItems = menuItems;

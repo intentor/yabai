@@ -4,7 +4,7 @@ import lejos.nxt.Button;
 import org.intentor.yabai.constants.Asset;
 import org.intentor.yabai.constants.StateName;
 import org.intentor.yabai.core.data.FileManager;
-import org.intentor.yabai.util.MenuTextItem;
+import org.intentor.yabai.util.MenuItem;
 
 /**
  * Settings/Sensors ports state.
@@ -17,11 +17,11 @@ public class SensorsState extends OptionsState {
 	 */
 	public SensorsState(FileManager fileManager) {
 		super("Sensors", Asset.ICON_SENSORS,
-			new MenuTextItem[] { 
-				new MenuTextItem("Light"),
-				new MenuTextItem("Sonar"),
-				new MenuTextItem("Touch"),
-				new MenuTextItem("Back")
+			new MenuItem[] { 
+				new MenuItem("Light"),
+				new MenuItem("Sonar"),
+				new MenuItem("Touch"),
+				new MenuItem("Back")
 			}, fileManager);
 	}
 	

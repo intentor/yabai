@@ -4,7 +4,7 @@ import lejos.nxt.Button;
 import org.intentor.yabai.constants.StateName;
 import org.intentor.yabai.constants.Asset;
 import org.intentor.yabai.core.data.FileManager;
-import org.intentor.yabai.util.MenuTextItem;
+import org.intentor.yabai.util.MenuItem;
 
 /**
  * Settings home state.
@@ -17,12 +17,12 @@ public class SettingsState extends OptionsState {
 	 */
 	public SettingsState(FileManager fileManager) {
 		super("Settings", Asset.ICON_SETTINGS,
-			new MenuTextItem[] { 
-				new MenuTextItem("Motors"),
-				new MenuTextItem("Sensors"),
-				new MenuTextItem("Parameters"),
-				new MenuTextItem("Speed"),
-				new MenuTextItem("Back")
+			new MenuItem[] { 
+				new MenuItem("Motors"),
+				new MenuItem("Sensors"),
+				new MenuItem("Parameters"),
+				new MenuItem("Speed"),
+				new MenuItem("Back")
 			}, fileManager);
 	}
 	

@@ -4,7 +4,7 @@ import lejos.nxt.Button;
 import org.intentor.yabai.constants.Asset;
 import org.intentor.yabai.constants.StateName;
 import org.intentor.yabai.core.data.FileManager;
-import org.intentor.yabai.util.MenuTextItem;
+import org.intentor.yabai.util.MenuItem;
 
 /**
  * Settings/Speed configurations view.
@@ -17,11 +17,11 @@ public class SpeedState extends OptionsState {
 	 */
 	public SpeedState(FileManager fileManager) {
 		super("Speed", Asset.ICON_SPEED,
-			new MenuTextItem[] { 
-				new MenuTextItem("Front"),
-				new MenuTextItem("Back"),
-				new MenuTextItem("Rotate"),
-				new MenuTextItem("Back")
+			new MenuItem[] { 
+				new MenuItem("Front"),
+				new MenuItem("Back"),
+				new MenuItem("Rotate"),
+				new MenuItem("Back")
 			}, fileManager);
 	}
 	

@@ -4,7 +4,7 @@ import lejos.nxt.Button;
 import org.intentor.yabai.constants.Asset;
 import org.intentor.yabai.constants.StateName;
 import org.intentor.yabai.core.data.FileManager;
-import org.intentor.yabai.util.MenuTextItem;
+import org.intentor.yabai.util.MenuItem;
 
 /**
  * Settings/Parameters state.
@@ -17,11 +17,11 @@ public class ParametersState extends OptionsState {
 	 */
 	public ParametersState(FileManager fileManager) {
 		super("Parameters", Asset.ICON_PARAMETERS,
-			new MenuTextItem[] { 
-				new MenuTextItem("Timer"),
-				new MenuTextItem("Color"),
-				new MenuTextItem("Sonar"),
-				new MenuTextItem("Back")
+			new MenuItem[] { 
+				new MenuItem("Timer"),
+				new MenuItem("Color"),
+				new MenuItem("Sonar"),
+				new MenuItem("Back")
 			}, fileManager);
 	}
 	
