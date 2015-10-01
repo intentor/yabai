@@ -11,6 +11,9 @@ import org.intentor.yabai.valueobjects.AiParameters;
  * Settings/Sensors ports state.
  */
 public class SensorsState extends OptionsState {
+	/** Sensor ports. */
+	private static final String[] SENSOR_PORTS = new String[] { "1", "2", "3", "4" };
+	
 	/**
 	 * Creates a new instance of the class.
 	 * 
@@ -20,9 +23,9 @@ public class SensorsState extends OptionsState {
 	public SensorsState(AiParameters parameters, FileManager fileManager) {
 		super("Sensors", Asset.ICON_SENSORS,
 			new MenuItem[] { 
-				new MenuItem("Light"),
-				new MenuItem("Sonar"),
-				new MenuItem("Touch"),
+				new MenuListItem("Light", String.valueOf(parameters.sensorLight), SENSOR_PORTS),
+				new MenuListItem("Sonar", String.valueOf(parameters.sensorUltrasonic), SENSOR_PORTS),
+				new MenuListItem("Touch", String.valueOf(parameters.sensorTouch), SENSOR_PORTS),
 				new MenuItem("Back")
 			}, parameters, fileManager);
 	}

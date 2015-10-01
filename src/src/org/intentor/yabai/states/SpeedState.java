@@ -20,9 +20,9 @@ public class SpeedState extends OptionsState {
 	public SpeedState(AiParameters parameters, FileManager fileManager) {
 		super("Speed", Asset.ICON_SPEED,
 			new MenuItem[] { 
-				new MenuItem("Front"),
-				new MenuItem("Back"),
-				new MenuItem("Rotate"),
+				new MenuIntItem("Front", parameters.speedForward, 180, 2160, 30),				
+				new MenuIntItem("Back", parameters.speedBackward, 180, 2160, 30),
+				new MenuIntItem("Rotate", parameters.speedRotation, 180, 2160, 30),
 				new MenuItem("Back")
 			}, parameters, fileManager);
 	}

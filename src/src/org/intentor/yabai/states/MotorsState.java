@@ -11,6 +11,8 @@ import org.intentor.yabai.valueobjects.AiParameters;
  * Settings/Motors ports state.
  */
 public class MotorsState extends OptionsState {
+	/** Motor ports. */
+	private static final String[] MOTOR_PORTS = new String[] { "A", "B", "C" };
 	/**
 	 * Creates a new instance of the class.
 	 * 
@@ -20,8 +22,8 @@ public class MotorsState extends OptionsState {
 	public MotorsState(AiParameters parameters, FileManager fileManager) {
 		super("Motors", Asset.ICON_MOTORS, 
 			new MenuItem[] { 
-				new MenuItem("Left"),
-				new MenuItem("Right"),
+				new MenuListItem("Left", parameters.motorLeft, MOTOR_PORTS),
+				new MenuListItem("Right", parameters.motorRight, MOTOR_PORTS),
 				new MenuItem("Back")
 			}, parameters, fileManager);
 	}

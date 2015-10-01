@@ -11,6 +11,9 @@ import org.intentor.yabai.valueobjects.AiParameters;
  * Settings/Parameters state.
  */
 public class ParametersState extends OptionsState {
+	/** Light sensor color values. */
+	private static final String[] COLOR_VALUES = new String[] { "W", "B" };
+	
 	/**
 	 * Creates a new instance of the class.
 	 * 
@@ -20,9 +23,9 @@ public class ParametersState extends OptionsState {
 	public ParametersState(AiParameters parameters, FileManager fileManager) {
 		super("Parameters", Asset.ICON_PARAMETERS,
 			new MenuItem[] { 
-				new MenuItem("Timer"),
-				new MenuItem("Color"),
-				new MenuItem("Sonar"),
+				new MenuIntItem("Timer", parameters.timer, 1, 20, 1),
+				new MenuListItem("Color", parameters.color, COLOR_VALUES),
+				new MenuIntItem("Sonar", parameters.detectionDistance, 5, 180, 5),
 				new MenuItem("Back")
 			}, parameters, fileManager);
 	}
