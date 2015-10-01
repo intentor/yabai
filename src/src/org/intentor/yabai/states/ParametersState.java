@@ -25,7 +25,7 @@ public class ParametersState extends OptionsState {
 			new MenuItem[] { 
 				new MenuIntItem("Timer", parameters.timer, 1, 20, 1),
 				new MenuListItem("Color", parameters.color, COLOR_VALUES),
-				new MenuIntItem("Sonar", parameters.detectionDistance, 5, 180, 5),
+				new MenuIntItem("Sonar", parameters.detectionDistance, 5, 170, 5),
 				new MenuItem("Back")
 			}, parameters, fileManager);
 	}

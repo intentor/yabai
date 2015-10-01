@@ -30,7 +30,7 @@ public class MenuIntItem extends MenuItem {
 	 * @param step The step to increment/decrement..
 	 */
 	public MenuIntItem(String label, int value, int minValue, int maxValue, int step) {
-		super(label);
+		this.label = this.formatLabel(label, String.valueOf(value));
 		this.value = value;
 		this.minValue = minValue;
 		this.maxValue = maxValue;

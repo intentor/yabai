@@ -14,11 +14,18 @@ public class MenuItem {
 	
 	/**
 	 * Creates a menu item.
+	 */
+	public MenuItem() {
+		this.label = "";
+	}
+	
+	/**
+	 * Creates a menu item.
 	 * 
 	 * @param label Item's label.
 	 */
 	public MenuItem(String label) {
-		this.label = PREFIX + label;
+		this.label = this.formatLabel(label, "");
 	}
 	
 	/**
@@ -47,5 +54,16 @@ public class MenuItem {
 	 */
 	public Boolean buttonPressed(Button button) {
 		return (button == Button.ENTER);
+	}
+	
+	/**
+	 * Formats text for the label, considering 15 characters wide.
+	 * 
+	 * @param left Left label value.
+	 * @param right Right label value.
+	 * @return The formatted label.
+	 */
+	protected final String formatLabel(String left, String right) {
+		return PREFIX + left + " " + right;
 	}
 }

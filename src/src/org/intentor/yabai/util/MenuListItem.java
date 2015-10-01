@@ -19,7 +19,7 @@ public class MenuListItem extends MenuItem {
 	 * @param list Item's list.
 	 */
 	public MenuListItem(String label, String value, String[] list) {
-		super(label);
+		this.label = this.formatLabel(label, value);
 		this.value = value;
 		this.list = list;
 	}
