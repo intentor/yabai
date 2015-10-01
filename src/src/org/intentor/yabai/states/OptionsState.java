@@ -1,12 +1,12 @@
 package org.intentor.yabai.states;
 
-import org.intentor.yabai.core.State;
-import org.intentor.yabai.core.data.FileManager;
 import org.intentor.yabai.valueobjects.AiParameters;
 import javax.microedition.lcdui.Graphics;
 import javax.microedition.lcdui.Image;
 import lejos.nxt.LCD;
-import lejos.util.TextMenu;
+import org.intentor.yabai.core.State;
+import org.intentor.yabai.core.data.FileManager;
+import org.intentor.yabai.util.TextMenu;
 
 /**
  * Options base state.
