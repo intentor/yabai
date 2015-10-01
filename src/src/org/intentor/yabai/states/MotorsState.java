@@ -1,8 +1,10 @@
 package org.intentor.yabai.states;
 
+import lejos.nxt.Button;
 import org.intentor.yabai.constants.Asset;
 import org.intentor.yabai.constants.StateName;
 import org.intentor.yabai.core.data.FileManager;
+import org.intentor.yabai.util.MenuTextItem;
 
 /**
  * Settings/Motors ports state.
@@ -15,17 +17,21 @@ public class MotorsState extends OptionsState {
 	 */
 	public MotorsState(FileManager fileManager) {
 		super("Motors", Asset.ICON_MOTORS, 
-			new String[] { " Left", " Right", " Back" },
-			fileManager);
+			new MenuTextItem[] { 
+				new MenuTextItem("Left"),
+				new MenuTextItem("Right"),
+				new MenuTextItem("Back")
+			}, fileManager);
 	}
 	
 	/**
-	 * Called when a menu item is selected.
+	 * Called when a menu option is selected.
 	 * 
 	 * @param option The selected option.
+	 * @param button The pressed button that selected the option.
 	 */
 	@Override
-	protected void onMenuOptionSelected(int option) {
+	protected void onMenuOptionSelected(int option, Button button) {
 		switch (option) {
 			case 0:
 				
@@ -34,7 +40,9 @@ public class MotorsState extends OptionsState {
 				
 			break;
 			case 2:
-				this.stateManager.start(StateName.SETTINGS);
+				if (button == Button.ENTER) {
+					this.stateManager.start(StateName.SETTINGS);
+				}
 			break;
 		}
 	}

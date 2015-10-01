@@ -1,8 +1,10 @@
 package org.intentor.yabai.states;
 
+import lejos.nxt.Button;
 import org.intentor.yabai.constants.StateName;
 import org.intentor.yabai.constants.Asset;
 import org.intentor.yabai.core.data.FileManager;
+import org.intentor.yabai.util.MenuTextItem;
 
 /**
  * Settings home state.
@@ -15,17 +17,23 @@ public class SettingsState extends OptionsState {
 	 */
 	public SettingsState(FileManager fileManager) {
 		super("Settings", Asset.ICON_SETTINGS,
-			new String[] { " Motors", " Sensors", " Parameters", " Speed", " Back" },
-			fileManager);
+			new MenuTextItem[] { 
+				new MenuTextItem("Motors"),
+				new MenuTextItem("Sensors"),
+				new MenuTextItem("Parameters"),
+				new MenuTextItem("Speed"),
+				new MenuTextItem("Back")
+			}, fileManager);
 	}
 	
 	/**
-	 * Called when a menu item is selected.
+	 * Called when a menu option is selected.
 	 * 
 	 * @param option The selected option.
+	 * @param button The pressed button that selected the option.
 	 */
 	@Override
-	protected void onMenuOptionSelected(int option) {
+	protected void onMenuOptionSelected(int option, Button button) {
 		switch (option) {
 			case 0:
 				this.stateManager.start(StateName.SETTINGS_MOTORS);
@@ -40,7 +48,9 @@ public class SettingsState extends OptionsState {
 				this.stateManager.start(StateName.SETTINGS_SPEED);
 			break;
 			case 4:
-				this.stateManager.start(StateName.HOME);
+				if (button == Button.ENTER) {
+					this.stateManager.start(StateName.HOME);
+				}
 			break;
 		}
 	}

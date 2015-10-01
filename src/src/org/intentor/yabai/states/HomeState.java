@@ -5,19 +5,24 @@ import lejos.nxt.LCD;
 import org.intentor.yabai.constants.StateName;
 import org.intentor.yabai.constants.Asset;
 import org.intentor.yabai.core.State;
-import org.intentor.yabai.util.TextMenu;
+import org.intentor.yabai.util.Menu;
+import org.intentor.yabai.util.MenuTextItem;
 
 /**
  * Home state.
  */
 public class HomeState extends State {
 	/** The view menu items. */
-	private final String[] menuItems = { " Start", " Settings", " Exit" };
+	private final MenuTextItem[] menuItems = { 
+		new MenuTextItem("Start"),
+		new MenuTextItem("Settings"),
+		new MenuTextItem("Exit")
+	};
 	
 	/** Program version. */
 	private final String version;
 	/** The text menu. */
-	private TextMenu menu;
+	private Menu menu;
 	
 	public HomeState(String version) {
 		this.version = "v" + version;
@@ -26,7 +31,7 @@ public class HomeState extends State {
 	@Override
 	public void onStart() {
 		if (this.menu == null) {
-			this.menu = new TextMenu(this.menuItems, 4);
+			this.menu = new Menu(this.menuItems, 4);
 		}
 	}
 	

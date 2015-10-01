@@ -1,8 +1,10 @@
 package org.intentor.yabai.states;
 
+import lejos.nxt.Button;
 import org.intentor.yabai.constants.Asset;
 import org.intentor.yabai.constants.StateName;
 import org.intentor.yabai.core.data.FileManager;
+import org.intentor.yabai.util.MenuTextItem;
 
 /**
  * Settings/Speed configurations view.
@@ -15,17 +17,22 @@ public class SpeedState extends OptionsState {
 	 */
 	public SpeedState(FileManager fileManager) {
 		super("Speed", Asset.ICON_SPEED,
-			new String[] { " Front", " Back", " Rotate", " Back" },
-			fileManager);
+			new MenuTextItem[] { 
+				new MenuTextItem("Front"),
+				new MenuTextItem("Back"),
+				new MenuTextItem("Rotate"),
+				new MenuTextItem("Back")
+			}, fileManager);
 	}
 	
 	/**
-	 * Called when a menu item is selected.
+	 * Called when a menu option is selected.
 	 * 
 	 * @param option The selected option.
+	 * @param button The pressed button that selected the option.
 	 */
 	@Override
-	protected void onMenuOptionSelected(int option) {
+	protected void onMenuOptionSelected(int option, Button button) {
 		switch (option) {
 			case 0:
 				
@@ -37,7 +44,9 @@ public class SpeedState extends OptionsState {
 				
 			break;
 			case 3:
-				this.stateManager.start(StateName.SETTINGS);
+				if (button == Button.ENTER) {
+					this.stateManager.start(StateName.SETTINGS);
+				}
 			break;
 		}
 	}
