@@ -5,6 +5,7 @@ import org.intentor.yabai.constants.StateName;
 import org.intentor.yabai.constants.Asset;
 import org.intentor.yabai.core.data.FileManager;
 import org.intentor.yabai.util.MenuItem;
+import org.intentor.yabai.valueobjects.AiParameters;
 
 /**
  * Settings home state.
@@ -14,8 +15,9 @@ public class SettingsState extends OptionsState {
 	 * Creates a new instance of the class.
 	 * 
 	 * @param fileManager File manager.
+	 * @param parameters AI parameters.
 	 */
-	public SettingsState(FileManager fileManager) {
+	public SettingsState(AiParameters parameters, FileManager fileManager) {
 		super("Settings", Asset.ICON_SETTINGS,
 			new MenuItem[] { 
 				new MenuItem("Motors"),
@@ -23,7 +25,7 @@ public class SettingsState extends OptionsState {
 				new MenuItem("Parameters"),
 				new MenuItem("Speed"),
 				new MenuItem("Back")
-			}, fileManager);
+			}, parameters, fileManager);
 	}
 	
 	/**

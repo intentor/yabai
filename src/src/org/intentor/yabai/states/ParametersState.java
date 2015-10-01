@@ -4,7 +4,8 @@ import lejos.nxt.Button;
 import org.intentor.yabai.constants.Asset;
 import org.intentor.yabai.constants.StateName;
 import org.intentor.yabai.core.data.FileManager;
-import org.intentor.yabai.util.MenuItem;
+import org.intentor.yabai.util.*;
+import org.intentor.yabai.valueobjects.AiParameters;
 
 /**
  * Settings/Parameters state.
@@ -14,15 +15,16 @@ public class ParametersState extends OptionsState {
 	 * Creates a new instance of the class.
 	 * 
 	 * @param fileManager File manager.
+	 * @param parameters AI parameters.
 	 */
-	public ParametersState(FileManager fileManager) {
+	public ParametersState(AiParameters parameters, FileManager fileManager) {
 		super("Parameters", Asset.ICON_PARAMETERS,
 			new MenuItem[] { 
 				new MenuItem("Timer"),
 				new MenuItem("Color"),
 				new MenuItem("Sonar"),
 				new MenuItem("Back")
-			}, fileManager);
+			}, parameters, fileManager);
 	}
 	
 	/**

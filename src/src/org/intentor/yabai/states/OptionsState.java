@@ -33,16 +33,15 @@ public abstract class OptionsState extends State {
 	 * @param title View title.
 	 * @param icon View icon. Should be 16x16 pixels.
 	 * @param menuItems The view menu items.
+	 * @param parameters AI parameters.
 	 * @param file File manager.
 	 */
-	public OptionsState(String title, Image icon, MenuItem[] menuItems, FileManager file) {		
+	public OptionsState(String title, Image icon, MenuItem[] menuItems, AiParameters parameters, FileManager file) {		
 		this.title = title;
 		this.icon = icon;
 		this.menuItems = menuItems;
+		this.parameters = parameters;
 		this.file = file;
-		
-		String data = this.file.read();
-		this.parameters = AiParameters.createFromString(data);
 	}
 	
 	@Override

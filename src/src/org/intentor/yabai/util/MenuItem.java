@@ -6,6 +6,9 @@ import lejos.nxt.Button;
  * Text menu item.
  */
 public class MenuItem {
+	/** Label prefix. */
+	protected static final String PREFIX = " ";
+	
 	/** Item's label. */
 	protected String label;
 	
@@ -15,7 +18,7 @@ public class MenuItem {
 	 * @param label Item's label.
 	 */
 	public MenuItem(String label) {
-		this.label = label;
+		this.label = PREFIX + label;
 	}
 	
 	/**
@@ -24,7 +27,7 @@ public class MenuItem {
 	 * @return The label value.
 	 */
 	public String getLabel() {
-		return " " + this.label;
+		return this.label;
 	}
 	
 	/**

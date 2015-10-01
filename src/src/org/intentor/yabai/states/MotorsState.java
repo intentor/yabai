@@ -4,7 +4,8 @@ import lejos.nxt.Button;
 import org.intentor.yabai.constants.Asset;
 import org.intentor.yabai.constants.StateName;
 import org.intentor.yabai.core.data.FileManager;
-import org.intentor.yabai.util.MenuItem;
+import org.intentor.yabai.util.*;
+import org.intentor.yabai.valueobjects.AiParameters;
 
 /**
  * Settings/Motors ports state.
@@ -14,14 +15,15 @@ public class MotorsState extends OptionsState {
 	 * Creates a new instance of the class.
 	 * 
 	 * @param fileManager File manager.
+	 * @param parameters AI parameters.
 	 */
-	public MotorsState(FileManager fileManager) {
+	public MotorsState(AiParameters parameters, FileManager fileManager) {
 		super("Motors", Asset.ICON_MOTORS, 
 			new MenuItem[] { 
 				new MenuItem("Left"),
 				new MenuItem("Right"),
 				new MenuItem("Back")
-			}, fileManager);
+			}, parameters, fileManager);
 	}
 	
 	/**
