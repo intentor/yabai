@@ -3,7 +3,6 @@ package org.intentor.yabai.states;
 import org.intentor.yabai.valueobjects.AiParameters;
 import javax.microedition.lcdui.Graphics;
 import javax.microedition.lcdui.Image;
-import lejos.nxt.Button;
 import lejos.nxt.LCD;
 import org.intentor.yabai.core.State;
 import org.intentor.yabai.core.data.FileManager;
@@ -19,7 +18,7 @@ public abstract class OptionsState extends State {
 	/** View icon. Should be 16x16 pixels. */
 	private final Image icon;
 	/** The view menu items. */
-	private final MenuItem[] menuItems;
+	protected final MenuItem[] menuItems;
 	/** The view menu items. */
 	private Menu menu;
 	/** File manager. */
@@ -49,6 +48,8 @@ public abstract class OptionsState extends State {
 		if (this.menu == null) {
 			this.menu = new Menu(this.menuItems, 3);
 		}
+		
+		this.menu.setCurrentIndex(0);
 	}
 	
 	/** 
@@ -66,20 +67,14 @@ public abstract class OptionsState extends State {
 
 		this.graphics.drawLine(LCD.CELL_WIDTH * 3 + 2, LCD.CELL_HEIGHT + 2, 
 			LCD.CELL_WIDTH * LCD.DISPLAY_CHAR_WIDTH, LCD.CELL_HEIGHT + 2);
-		
-		int selected = menu.select();		
-		if (selected == -1) {
-			this.onMenuOptionSelected(menu.getSelectedIndex(), Button.ESCAPE);
-		} else {
-			this.onMenuOptionSelected(selected, Button.ENTER);
-		}
+				
+		this.onMenuOptionSelected(menu.select());
 	}
 	
 	/**
 	 * Called when a menu option is selected.
 	 * 
 	 * @param option The selected option.
-	 * @param button The pressed button that selected the option.
 	 */
-	protected abstract void onMenuOptionSelected(int option, Button button);
+	protected abstract void onMenuOptionSelected(int option);
 }

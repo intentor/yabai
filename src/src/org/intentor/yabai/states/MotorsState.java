@@ -32,22 +32,15 @@ public class MotorsState extends OptionsState {
 	 * Called when a menu option is selected.
 	 * 
 	 * @param option The selected option.
-	 * @param button The pressed button that selected the option.
 	 */
 	@Override
-	protected void onMenuOptionSelected(int option, Button button) {
-		switch (option) {
-			case 0:
-				
-			break;
-			case 1:
-				
-			break;
-			case 2:
-				if (button == Button.ENTER) {
-					this.stateManager.start(StateName.SETTINGS);
-				}
-			break;
+	protected void onMenuOptionSelected(int option) {
+		if (option == 2) {
+			//Updates settings.
+			this.parameters.motorLeft = this.menuItems[0].getValue();
+			this.parameters.motorRight = this.menuItems[1].getValue();
+			
+			this.stateManager.start(StateName.SETTINGS);
 		}
 	}
 }

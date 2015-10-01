@@ -33,6 +33,8 @@ public class HomeState extends State {
 		if (this.menu == null) {
 			this.menu = new Menu(this.menuItems, 4);
 		}
+		
+		this.menu.setCurrentIndex(0);
 	}
 	
 	@Override

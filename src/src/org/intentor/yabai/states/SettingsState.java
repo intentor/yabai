@@ -32,10 +32,9 @@ public class SettingsState extends OptionsState {
 	 * Called when a menu option is selected.
 	 * 
 	 * @param option The selected option.
-	 * @param button The pressed button that selected the option.
 	 */
 	@Override
-	protected void onMenuOptionSelected(int option, Button button) {
+	protected void onMenuOptionSelected(int option) {
 		switch (option) {
 			case 0:
 				this.stateManager.start(StateName.SETTINGS_MOTORS);
@@ -50,9 +49,10 @@ public class SettingsState extends OptionsState {
 				this.stateManager.start(StateName.SETTINGS_SPEED);
 			break;
 			case 4:
-				if (button == Button.ENTER) {
-					this.stateManager.start(StateName.HOME);
-				}
+				//Saves settings.
+				this.file.write(this.parameters.toString());
+				
+				this.stateManager.start(StateName.HOME);
 			break;
 		}
 	}

@@ -30,29 +30,22 @@ public class ParametersState extends OptionsState {
 			}, parameters, fileManager);
 	}
 	
+	
+	
 	/**
 	 * Called when a menu option is selected.
 	 * 
 	 * @param option The selected option.
-	 * @param button The pressed button that selected the option.
 	 */
 	@Override
-	protected void onMenuOptionSelected(int option, Button button) {
-		switch (option) {
-			case 0:
-				
-			break;
-			case 1:
-				
-			break;
-			case 2:
-				
-			break;
-			case 3:
-				if (button == Button.ENTER) {
-					this.stateManager.start(StateName.SETTINGS);
-				}
-			break;
+	protected void onMenuOptionSelected(int option) {
+		if (option == 3) {
+			//Updates settings.
+			this.parameters.timer = Integer.parseInt(this.menuItems[0].getValue());
+			this.parameters.color = this.menuItems[1].getValue();
+			this.parameters.detectionDistance = Integer.parseInt(this.menuItems[2].getValue());
+			
+			this.stateManager.start(StateName.SETTINGS);
 		}
 	}
 }

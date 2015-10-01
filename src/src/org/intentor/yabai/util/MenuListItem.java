@@ -10,6 +10,10 @@ public class MenuListItem extends MenuItem {
 	private String value;
 	/** Item's list. */
 	private String[] list;
+	/** The current value index. */
+	private int currentIndex;
+	/** The original label. */
+	private String originalLabel;
 	
 	/**
 	 * Creates a menu item.
@@ -19,9 +23,11 @@ public class MenuListItem extends MenuItem {
 	 * @param list Item's list.
 	 */
 	public MenuListItem(String label, String value, String[] list) {
-		this.label = this.formatLabel(label, value);
+		this.originalLabel = label;
+		this.label = this.formatLabel(this.originalLabel, value);
 		this.value = value;
 		this.list = list;
+		this.currentIndex = ArrayUtils.indexOf(this.list, this.value);
 	}
 	
 	/**
@@ -47,11 +53,33 @@ public class MenuListItem extends MenuItem {
 	/**
 	 * A button was pressed on the item.
 	 * 
-	 * @param button Pressed button.
+	 * @param buttonId Pressed button ID.
 	 * @return Boolean value indicating whether the selected index should be returned.
 	 */
 	@Override
-	public Boolean buttonPressed(Button button) {
-		return (button == Button.ENTER);
+	public Boolean buttonPressed(int buttonId) {
+		if (buttonId == Button.ID_ENTER) {
+			//Increase.
+			this.currentIndex++;
+			
+			if (this.currentIndex > (this.list.length - 1)) {
+				this.currentIndex = 0;
+			}
+			
+			this.value = this.list[this.currentIndex];			
+			this.label = this.formatLabel(this.originalLabel, this.value);
+		} else if (buttonId == Button.ID_ESCAPE) {
+			//Decrease.
+			this.currentIndex--;
+			
+			if (this.currentIndex < 0) {
+				this.currentIndex = (this.list.length - 1);
+			}
+			
+			this.value = this.list[this.currentIndex];			
+			this.label = this.formatLabel(this.originalLabel, this.value);
+		}
+		
+		return false;
 	}
 }

@@ -51,11 +51,11 @@ public class MenuItem {
 	/**
 	 * A button was pressed on the item.
 	 * 
-	 * @param button Pressed button.
+	 * @param buttonId Pressed button ID.
 	 * @return Boolean value indicating whether the selected index should be returned.
 	 */
-	public Boolean buttonPressed(Button button) {
-		return (button == Button.ENTER);
+	public Boolean buttonPressed(int buttonId) {
+		return (buttonId == Button.ID_ENTER);
 	}
 	
 	/**

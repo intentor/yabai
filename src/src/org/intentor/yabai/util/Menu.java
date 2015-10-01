@@ -6,7 +6,7 @@ import lejos.nxt.LCD;
 /**
  * Displays a list of items.  The select() method allows the user to scroll the list using the right and left keys to scroll forward and backward 
  * through the list. The location of the list , and an optional title can be specified.
- * @author Roger Glassey (2007). Updated by André "intentor" Martins (2015).
+ * @author Roger Glassey (2007). Customized by André "intentor" Martins (2015).
  */
 public class Menu {
 	/** Timout used for {@link Button#waitForAnyPress(int)} in {@link #select(int, int)}. */
@@ -56,11 +56,13 @@ public class Menu {
 	 * @param items  -  string array containing the menu items. No items beyond the first null will be displayed.
 	 */	
 	public Menu(MenuItem[] items, int topRow, String title) {
-		if (topRow < 0 || (topRow == 0 && title != null))
+		if (topRow < 0 || (topRow == 0 && title != null)) {
 			throw new IllegalArgumentException("illegal topRow argument");
+		}
 		
 		_topRow = topRow;
-		setTitle(title);
+		_currentIndex = 0;
+		this.setTitle(title);
 		this.setItems(items);
 	}
 	
@@ -111,47 +113,34 @@ public class Menu {
 	}
 	
 	/**
-	 * Returns Currently selected index.
+	 * Gets the current index.
 	 * 
 	 * @return The selected index.
 	 */
-	public int getSelectedIndex() {
+	public int getCurrentIndex() {
 	   return _currentIndex;
 	}
 	
 	/**
-	 * Allows the user to scroll through the items, using the right and left buttons (forward and back)  The Enter key closes the menu <br>
-	 * and returns the index of the selected item. <br>
-	 * The menu display wraps items that scroll off the top will reappear on the bottom and vice versa.
+	 * Sets the current index.
 	 * 
-	 * The selectedIndex is set to the first menu item.
-	 * 
-	 * @return the index of the selected item
-	 **/
-	public int select() { 
-	   return select(0,0); 
-	} 
-	
-	/**
-	 * Version of select without timeout.
+	 * @param value The new index.
+	 * @return The selected index.
 	 */
-	public int select(int selectedIndex) {
-		return select(selectedIndex, 0);
+	public void setCurrentIndex(int value) {
+	   _currentIndex = value;
 	}
 
 	/**
-	 * Allows the user to scroll through the items, using the right and left buttons (forward and back)  The Enter key closes the menu <br>
-	 * and returns the index of the selected item. <br>
+	 * Allows the user to scroll through the items, using the right and left buttons (forward and back). 
+	 * The Enter key selects the item. and returns the index of the selected item.
 	 * The menu display wraps items that scroll off the top will reappear on the bottom and vice versa.
 	 * 
 	 * This version of select allows the selected index to be set when the menu is first displayed.
 	 * 
-	 * @param selectedIndex the index to start the menu on
 	 * @return the index of the selected item
 	 **/
-	public int select(int selectedIndex, int timeout) { 
-		_currentIndex = selectedIndex;
-		
+	public int select() {		
 		if (_currentIndex >= _length) {
 			//might result in -1
 			_currentIndex = _length -1;
@@ -174,23 +163,18 @@ public class Menu {
 		while(true) {
 			int button;
 			do {				
-				if (_quit)
+				if (_quit) {
 					return -2; // quit by another thread
-				
-				if (timeout > 0 && System.currentTimeMillis() - _startTime >= timeout) 
-					return -3; // timeout
+				}
 				
 				button = Button.waitForAnyPress(BUTTON_POLL_INTERVAL);
 			} while (button == 0);
 			
-			if (button == Button.ID_ENTER && _currentIndex >= 0 && _currentIndex < _length) {
+			if (_items[_currentIndex].buttonPressed(button) && _currentIndex >= 0 && _currentIndex < _length) {
 				return _currentIndex;
 			}
-			if (button == Button.ID_ESCAPE) {
-				return -1; //Escape
-			}
 			if (button == Button.ID_RIGHT) {
-				//Scroll forward
+				//Scroll forward.
 				
 				_currentIndex++;
 				// check for index out of bounds
@@ -203,7 +187,7 @@ public class Menu {
 				}
 			}			
 			if (button == Button.ID_LEFT) {
-				//Scroll backward
+				//Scroll backward.
 				
 				_currentIndex--;
 				// check for index out of bounds

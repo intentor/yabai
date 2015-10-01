@@ -19,6 +19,8 @@ public class MenuIntItem extends MenuItem {
 	private int maxValue;
 	/** The step to increment/decrement. */
 	private int step;
+	/** The original label. */
+	private String originalLabel;
 	
 	/**
 	 * Creates a menu item.
@@ -30,7 +32,8 @@ public class MenuIntItem extends MenuItem {
 	 * @param step The step to increment/decrement..
 	 */
 	public MenuIntItem(String label, int value, int minValue, int maxValue, int step) {
-		this.label = this.formatLabel(label, String.valueOf(value));
+		this.originalLabel = label;
+		this.label = this.formatLabel(this.originalLabel, String.valueOf(value));
 		this.value = value;
 		this.minValue = minValue;
 		this.maxValue = maxValue;
@@ -60,11 +63,31 @@ public class MenuIntItem extends MenuItem {
 	/**
 	 * A button was pressed on the item.
 	 * 
-	 * @param button Pressed button.
+	 * @param buttonId Pressed button ID.
 	 * @return Boolean value indicating whether the selected index should be returned.
 	 */
 	@Override
-	public Boolean buttonPressed(Button button) {
-		return (button == Button.ENTER);
+	public Boolean buttonPressed(int buttonId) {
+		if (buttonId == Button.ID_ENTER) {
+			//Increase.
+			this.value += this.step;
+			
+			if (this.value > this.maxValue) {
+				this.value = this.minValue;
+			}
+			
+			this.label = this.formatLabel(this.originalLabel, String.valueOf(this.value));
+		} else if (buttonId == Button.ID_ESCAPE) {
+			//Decrease.
+			this.value -= this.step;
+			
+			if (this.value < this.minValue) {
+				this.value = this.maxValue;
+			}
+			
+			this.label = this.formatLabel(this.originalLabel, String.valueOf(this.value));
+		}
+		
+		return false;
 	}
 }
