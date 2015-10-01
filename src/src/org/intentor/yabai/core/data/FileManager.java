@@ -1,6 +1,6 @@
 package org.intentor.yabai.core.data;
 
-import org.intentor.yabai.core.StringUtils;
+import org.intentor.yabai.util.StringUtils;
 import java.io.DataInputStream;
 import java.io.File;
 import java.io.FileInputStream;

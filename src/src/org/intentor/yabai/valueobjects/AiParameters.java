@@ -1,7 +1,7 @@
 package org.intentor.yabai.valueobjects;
 
 import org.intentor.yabai.constants.BoundaryColor;
-import org.intentor.yabai.core.StringUtils;
+import org.intentor.yabai.util.StringUtils;
 import java.util.List;
 
 /**
