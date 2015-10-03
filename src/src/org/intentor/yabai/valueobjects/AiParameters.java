@@ -12,9 +12,9 @@ public class AiParameters {
 	private static final String SEPARATOR = ";";
 	
 	/** Left motor port. */
-	public String motorLeft;
+	public char motorLeft;
 	/** Right motor port. */
-	public String motorRight;
+	public char motorRight;
 	/** Light sensor port. */
 	public int sensorLight;
 	/** Ultrasonic sensor port. */
@@ -76,8 +76,8 @@ public class AiParameters {
 	public static AiParameters createDefault() {
 		AiParameters parameters = new AiParameters();
 		
-		parameters.motorLeft = "A";
-		parameters.motorRight = "B";
+		parameters.motorLeft = 'A';
+		parameters.motorRight = 'B';
 		parameters.sensorLight = 1;
 		parameters.sensorUltrasonic = 2;
 		parameters.sensorTouch = 3;
@@ -102,8 +102,8 @@ public class AiParameters {
 		
 		List<String> values = StringUtils.split(value, SEPARATOR);
 		
-		parameters.motorLeft = values.get(0);
-		parameters.motorRight = values.get(1);
+		parameters.motorLeft = values.get(0).charAt(0);
+		parameters.motorRight = values.get(1).charAt(0);
 		parameters.sensorLight = Integer.parseInt(values.get(2));
 		parameters.sensorUltrasonic = Integer.parseInt(values.get(3));
 		parameters.sensorTouch = Integer.parseInt(values.get(4));

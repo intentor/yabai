@@ -1,6 +1,5 @@
 package org.intentor.yabai.states;
 
-import lejos.nxt.Button;
 import org.intentor.yabai.constants.StateName;
 import org.intentor.yabai.constants.Asset;
 import org.intentor.yabai.core.data.FileManager;

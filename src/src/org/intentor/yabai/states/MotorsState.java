@@ -13,6 +13,7 @@ import org.intentor.yabai.valueobjects.AiParameters;
 public class MotorsState extends OptionsState {
 	/** Motor ports. */
 	private static final String[] MOTOR_PORTS = new String[] { "A", "B", "C" };
+	
 	/**
 	 * Creates a new instance of the class.
 	 * 
@@ -22,8 +23,8 @@ public class MotorsState extends OptionsState {
 	public MotorsState(AiParameters parameters, FileManager fileManager) {
 		super("Motors", Asset.ICON_MOTORS, 
 			new MenuItem[] { 
-				new MenuListItem("Left", parameters.motorLeft, MOTOR_PORTS),
-				new MenuListItem("Right", parameters.motorRight, MOTOR_PORTS),
+				new MenuListItem("Left", String.valueOf(parameters.motorLeft), MOTOR_PORTS),
+				new MenuListItem("Right", String.valueOf(parameters.motorRight), MOTOR_PORTS),
 				new MenuItem("Back")
 			}, parameters, fileManager);
 	}
@@ -37,8 +38,8 @@ public class MotorsState extends OptionsState {
 	protected void onMenuOptionSelected(int option) {
 		if (option == 2) {
 			//Updates settings.
-			this.parameters.motorLeft = this.menuItems[0].getValue();
-			this.parameters.motorRight = this.menuItems[1].getValue();
+			this.parameters.motorLeft = this.menuItems[0].getValue().charAt(0);
+			this.parameters.motorRight = this.menuItems[1].getValue().charAt(0);
 			
 			this.stateManager.start(StateName.SETTINGS);
 		}

@@ -29,7 +29,7 @@ public class Main {
 		StateManager stateManager = new StateManager();		
 		
 		stateManager.add(StateName.HOME, new HomeState(VERSION));
-		stateManager.add(StateName.RUNNING, new RunningState());
+		stateManager.add(StateName.RUNNING, new RunningState(parameters));
 		stateManager.add(StateName.SETTINGS, new SettingsState(parameters, file));
 		stateManager.add(StateName.SETTINGS_MOTORS, new MotorsState(parameters, file));
 		stateManager.add(StateName.SETTINGS_SENSORS, new SensorsState(parameters, file));
