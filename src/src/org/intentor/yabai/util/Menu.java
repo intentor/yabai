@@ -9,8 +9,8 @@ import lejos.nxt.LCD;
  * @author Roger Glassey (2007). Customized by André "intentor" Martins (2015).
  */
 public class Menu {
-	/** Timout used for {@link Button#waitForAnyPress(int)} in {@link #select(int, int)}. */
-	protected static final int BUTTON_POLL_INTERVAL = 10; // Time to wait for button press
+	/** Time to wait for button press (milliseconds). */
+	protected static final int BUTTON_POLL_INTERVAL = 10;
 	
 	/** Location of the top row of the list; set by constructor, used by display(). */
 	protected int _topRow = 0;	
