@@ -15,6 +15,8 @@ public class DriveForward implements Behavior {
 	private final NXTRegulatedMotor motorRight;
 	/** Driving speed. */
 	private final int speed;
+	/** Driving direction (F/B). */
+	private char direction;
 	/** Ultrasonic sensor. */
 	private final UltrasonicSensor sonar;
 	/** Detection distance to take control. */
@@ -26,13 +28,15 @@ public class DriveForward implements Behavior {
 	 * @param motorLeftPort Motor left port.
 	 * @param motorRightPort Motor right port.
 	 * @param speed Driving speed.
+	 * @param direction Driving direction (F/B).
 	 * @param sonarPort Ultrasonic sensor port.
 	 * @param detectDistance Detection distance to take control.
 	 */
-	public DriveForward(MotorPort motorLeftPort, MotorPort motorRightPort, int speed, SensorPort sonarPort, int detectDistance) {
+	public DriveForward(MotorPort motorLeftPort, MotorPort motorRightPort, int speed, char direction, SensorPort sonarPort, int detectDistance) {
 		this.motorLeft = Motor.getInstance(motorLeftPort.getId());
 		this.motorRight = Motor.getInstance(motorRightPort.getId());
 		this.speed = speed;
+		this.direction = direction;
 		this.sonar = new UltrasonicSensor(sonarPort);
 		this.detectDistance = detectDistance;
 	}
@@ -53,8 +57,14 @@ public class DriveForward implements Behavior {
 		
 		this.motorLeft.setSpeed(this.speed);
 		this.motorRight.setSpeed(this.speed);
-		this.motorLeft.forward();
-		this.motorRight.forward();
+		
+		if (this.direction == 'F') {
+			this.motorLeft.forward();
+			this.motorRight.forward();
+		} else {
+			this.motorLeft.backward();
+			this.motorRight.backward();
+		}
 		
 		while (!this.suppressed) {
 			LCD.drawString("Forward...", 0, 3);

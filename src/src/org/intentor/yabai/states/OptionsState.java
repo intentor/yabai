@@ -17,9 +17,9 @@ public abstract class OptionsState extends State {
 	private final String title;
 	/** View icon. Should be 16x16 pixels. */
 	private final Image icon;
-	/** The view menu items. */
+	/** View menu items. */
 	protected final MenuItem[] menuItems;
-	/** The view menu items. */
+	/** View menu items. */
 	private Menu menu;
 	/** File manager. */
 	protected FileManager file;
@@ -31,7 +31,7 @@ public abstract class OptionsState extends State {
 	 * 
 	 * @param title View title.
 	 * @param icon View icon. Should be 16x16 pixels.
-	 * @param menuItems The view menu items.
+	 * @param menuItems View menu items.
 	 * @param parameters AI parameters.
 	 * @param file File manager.
 	 */
@@ -74,7 +74,7 @@ public abstract class OptionsState extends State {
 	/**
 	 * Called when a menu option is selected.
 	 * 
-	 * @param option The selected option.
+	 * @param option Selected option.
 	 */
 	protected abstract void onMenuOptionSelected(int option);
 }

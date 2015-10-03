@@ -33,7 +33,7 @@ public class MenuItem {
 	/**
 	 * Gets the label value. It's 15 characters wide.
 	 * 
-	 * @return The label value.
+	 * @return Label value.
 	 */
 	public String getLabel() {
 		return this.label;
@@ -42,7 +42,7 @@ public class MenuItem {
 	/**
 	 * Gets the additional value associated with the item.
 	 * 
-	 * @return The associated value.
+	 * @return Associated value.
 	 */
 	public String getValue() {
 		return "";

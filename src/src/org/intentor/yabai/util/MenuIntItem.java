@@ -11,25 +11,25 @@ import lejos.nxt.Button;
  * Displays an int value (as string) and allows increment/decrement of the value.
  */
 public class MenuIntItem extends MenuItem {
-	/** The value. */
+	/** Item value. */
 	private int value;
-	/** The minimum value. */
+	/** Minimum value. */
 	private int minValue;
-	/** The maximum value. */
+	/** Maximum value. */
 	private int maxValue;
-	/** The step to increment/decrement. */
+	/** Step to increment/decrement. */
 	private int step;
-	/** The original label. */
+	/** Original label. */
 	private String originalLabel;
 	
 	/**
 	 * Creates a menu item.
 	 * 
 	 * @param label Item's label.
-	 * @param value The value.
-	 * @param minValue The minimum value.
-	 * @param maxValue The maximum value.
-	 * @param step The step to increment/decrement..
+	 * @param value Item value.
+	 * @param minValue Minimum value.
+	 * @param maxValue Maximum value.
+	 * @param step Step to increment/decrement..
 	 */
 	public MenuIntItem(String label, int value, int minValue, int maxValue, int step) {
 		this.originalLabel = label;
@@ -53,7 +53,7 @@ public class MenuIntItem extends MenuItem {
 	/**
 	 * Gets the additional value associated with the item.
 	 * 
-	 * @return The associated value.
+	 * @return Associated value.
 	 */
 	@Override
 	public String getValue() {

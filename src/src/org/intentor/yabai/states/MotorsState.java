@@ -1,6 +1,5 @@
 package org.intentor.yabai.states;
 
-import lejos.nxt.Button;
 import org.intentor.yabai.constants.Asset;
 import org.intentor.yabai.constants.StateName;
 import org.intentor.yabai.core.data.FileManager;
@@ -32,7 +31,7 @@ public class MotorsState extends OptionsState {
 	/**
 	 * Called when a menu option is selected.
 	 * 
-	 * @param option The selected option.
+	 * @param option Selected option.
 	 */
 	@Override
 	protected void onMenuOptionSelected(int option) {

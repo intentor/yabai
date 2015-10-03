@@ -30,7 +30,7 @@ public class SettingsState extends OptionsState {
 	/**
 	 * Called when a menu option is selected.
 	 * 
-	 * @param option The selected option.
+	 * @param option Selected option.
 	 */
 	@Override
 	protected void onMenuOptionSelected(int option) {

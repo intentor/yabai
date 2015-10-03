@@ -16,7 +16,7 @@ public abstract class State {
 	/**
 	 * Sets the state ID.
 	 * 
-	 * @param value The state ID.
+	 * @param value State ID.
 	 */
 	public void setId(String value) {
 		this.id = value;
@@ -25,7 +25,7 @@ public abstract class State {
 	/**
 	 * Gets the state ID.
 	 * 
-	 * @return The state ID.
+	 * @return State ID.
 	 */
 	public String getId() {
 		return this.id;		
@@ -34,7 +34,7 @@ public abstract class State {
 	/**
 	 * Sets the state manager.
 	 * 
-	 * @param value The state manager.
+	 * @param value State manager.
 	 */
 	public void setStateManager(StateManager value) {
 		this.stateManager = value;

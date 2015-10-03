@@ -7,9 +7,9 @@ public final class ArrayUtils {
 	/**
 	 * Gets the index from a given value in an array.
 	 * 
-	 * @param array The array.
-	 * @param value The value to be evaluated.
-	 * @return The index or -1.
+	 * @param array Array.
+	 * @param value Value to be evaluated.
+	 * @return Index or -1.
 	 */
 	public static int indexOf(String[] array, String value) {
 		int index = -1;

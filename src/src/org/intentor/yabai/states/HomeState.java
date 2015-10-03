@@ -12,7 +12,7 @@ import org.intentor.yabai.util.MenuItem;
  * Home state.
  */
 public class HomeState extends State {
-	/** The view menu items. */
+	/** View menu items. */
 	private final MenuItem[] menuItems = { 
 		new MenuItem("Start"),
 		new MenuItem("Settings"),
@@ -21,7 +21,7 @@ public class HomeState extends State {
 	
 	/** Program version. */
 	private final String version;
-	/** The text menu. */
+	/** Main menu. */
 	private Menu menu;
 	
 	public HomeState(String version) {

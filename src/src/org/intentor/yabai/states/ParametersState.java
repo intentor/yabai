@@ -1,6 +1,5 @@
 package org.intentor.yabai.states;
 
-import lejos.nxt.Button;
 import org.intentor.yabai.constants.Asset;
 import org.intentor.yabai.constants.StateName;
 import org.intentor.yabai.core.data.FileManager;
@@ -13,6 +12,8 @@ import org.intentor.yabai.valueobjects.AiParameters;
 public class ParametersState extends OptionsState {
 	/** Light sensor color values. */
 	private static final String[] COLOR_VALUES = new String[] { "W", "B" };
+	/** Forward direction. */
+	private static final String[] FORWARD_DIRECTION = new String[] { "F", "B" };
 	
 	/**
 	 * Creates a new instance of the class.
@@ -26,24 +27,24 @@ public class ParametersState extends OptionsState {
 				new MenuIntItem("Timer", parameters.timer, 1, 20, 1),
 				new MenuListItem("Color", parameters.color, COLOR_VALUES),
 				new MenuIntItem("Sonar", parameters.detectionDistance, 5, 170, 5),
+				new MenuListItem("Forward", String.valueOf(parameters.forward), FORWARD_DIRECTION),
 				new MenuItem("Back")
 			}, parameters, fileManager);
 	}
 	
-	
-	
 	/**
 	 * Called when a menu option is selected.
 	 * 
-	 * @param option The selected option.
+	 * @param option Selected option.
 	 */
 	@Override
 	protected void onMenuOptionSelected(int option) {
-		if (option == 3) {
+		if (option == 4) {
 			//Updates settings.
 			this.parameters.timer = Integer.parseInt(this.menuItems[0].getValue());
 			this.parameters.color = this.menuItems[1].getValue();
 			this.parameters.detectionDistance = Integer.parseInt(this.menuItems[2].getValue());
+			this.parameters.forward = this.menuItems[2].getValue().charAt(0);
 			
 			this.stateManager.start(StateName.SETTINGS);
 		}

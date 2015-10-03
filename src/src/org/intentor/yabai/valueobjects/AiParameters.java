@@ -23,7 +23,7 @@ public class AiParameters {
 	public int sensorTouch;
 	/** Timer to start the AI (seconds). */
 	public int timer;
-	/** Boundary color. */
+	/** Boundary color (B/W). */
 	public String color;
 	/** Detection distance. */
 	public int detectionDistance;
@@ -33,6 +33,8 @@ public class AiParameters {
 	public int speedBackward;
 	/** Rotation speed (degrees). */
 	public int speedRotation;
+	/** Indicates whether forward is forward or backward (F/B). */
+	public char forward;
 	
 	/**
 	 * Serializes the current instance as string.
@@ -64,6 +66,8 @@ public class AiParameters {
 		builder.append(this.speedBackward);
 		builder.append(SEPARATOR);
 		builder.append(this.speedRotation);
+		builder.append(SEPARATOR);
+		builder.append(this.forward);
 		
 		return builder.toString();
 	}
@@ -87,6 +91,7 @@ public class AiParameters {
 		parameters.speedForward = 1440;
 		parameters.speedBackward = 1440;
 		parameters.speedRotation = 1080;
+		parameters.forward = 'F';
 		
 		return parameters;
 	}
@@ -113,6 +118,7 @@ public class AiParameters {
 		parameters.speedForward = Integer.parseInt(values.get(8));
 		parameters.speedBackward = Integer.parseInt(values.get(9));
 		parameters.speedRotation = Integer.parseInt(values.get(10));
+		parameters.forward = values.get(11).charAt(0);
 		
 		return parameters;
 	}

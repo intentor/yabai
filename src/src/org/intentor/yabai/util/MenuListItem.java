@@ -10,9 +10,9 @@ public class MenuListItem extends MenuItem {
 	private String value;
 	/** Item's list. */
 	private String[] list;
-	/** The current value index. */
+	/** Current value index. */
 	private int currentIndex;
-	/** The original label. */
+	/** Original label. */
 	private String originalLabel;
 	
 	/**
@@ -33,7 +33,7 @@ public class MenuListItem extends MenuItem {
 	/**
 	 * Gets the label value. It's 15 characters wide.
 	 * 
-	 * @return The label value.
+	 * @return Label value.
 	 */
 	@Override
 	public String getLabel() {
@@ -43,7 +43,7 @@ public class MenuListItem extends MenuItem {
 	/**
 	 * Gets the additional value associated with the item.
 	 * 
-	 * @return The associated value.
+	 * @return Associated value.
 	 */
 	@Override
 	public String getValue() {

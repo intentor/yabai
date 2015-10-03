@@ -1,7 +1,6 @@
 package org.intentor.yabai.states;
 
 import javax.microedition.lcdui.Graphics;
-import lejos.nxt.Battery;
 import lejos.nxt.Button;
 import lejos.nxt.LCD;
 import lejos.nxt.Sound;
@@ -50,12 +49,7 @@ public class RunningState extends State implements TimerListener {
 	private static final int[] note = {2349, 115, 0, 5};
 	@Override
 	public void update() {
-		LCD.clear();
-		
-		this.graphics.drawRegion(Asset.ICON_BATTERY, 0, 0,  
-			Asset.ICON_BATTERY.getWidth(), Asset.ICON_BATTERY.getHeight(),
-			0, 0, 0, Graphics.LEFT | Graphics.TOP);		
-		this.graphics.fillRect(2, 1, (int)Math.floor(10 * (Battery.getVoltage() / 9.0f)), 6);		
+		LCD.clear();		
 		
 		this.graphics.drawRegion(Asset.LOGO_IAB, 0, 0,
 			Asset.LOGO_IAB.getWidth(), Asset.LOGO_IAB.getHeight(),

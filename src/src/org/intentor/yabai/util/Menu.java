@@ -237,4 +237,3 @@ public class Menu {
 		LCD.asyncRefresh();
 	}	
 }
-

@@ -10,8 +10,8 @@ public final class DataConverter {
 	/**
 	 * Converts a char to motor port.
 	 * 
-	 * @param port The port to convert from (A, B or C).
-	 * @return The motor port.
+	 * @param port Port to convert from (A, B or C).
+	 * @return Motor port.
 	 */
 	public static final MotorPort motorPortFromChar(char port) {
 		if (port == 'B') {
@@ -26,8 +26,8 @@ public final class DataConverter {
 	/**
 	 * Converts a integer to sensor port.
 	 * 
-	 * @param port The port to convert from (1-4).
-	 * @return The sensor port.
+	 * @param port Port to convert from (1-4).
+	 * @return Sensor port.
 	 */
 	public static final SensorPort sensorPortFromInt(int port) {
 		switch (port) {

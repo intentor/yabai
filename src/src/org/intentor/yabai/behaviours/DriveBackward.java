@@ -13,9 +13,11 @@ public class DriveBackward implements Behavior {
 	private final NXTRegulatedMotor motorLeft;
 	/** Right motor. */
 	private final NXTRegulatedMotor motorRight;
-	/** The driving speed. */
+	/** Driving speed. */
 	private final int speed;
-	/** The touch sensor. */
+	/** Driving direction (F/B). */
+	private char direction;
+	/** Touch sensor. */
 	private final TouchSensor touch;
 	
 	/**
@@ -23,13 +25,15 @@ public class DriveBackward implements Behavior {
 	 * 
 	 * @param motorLeftPort Motor left port.
 	 * @param motorRightPort Motor right port.
-	 * @param speed The driving speed.
+	 * @param speed Driving speed.
+	 * @param direction Driving direction (F/B).
 	 * @param touchPort Touch sensor port.
 	 */
-	public DriveBackward(MotorPort motorLeftPort, MotorPort motorRightPort, int speed, SensorPort touchPort) {
+	public DriveBackward(MotorPort motorLeftPort, MotorPort motorRightPort, int speed, char direction, SensorPort touchPort) {
 		this.motorLeft = Motor.getInstance(motorLeftPort.getId());
 		this.motorRight = Motor.getInstance(motorRightPort.getId());
 		this.speed = speed;
+		this.direction = direction;
 		this.touch = new TouchSensor(touchPort);
 	}
 
@@ -49,8 +53,14 @@ public class DriveBackward implements Behavior {
 		
 		this.motorLeft.setSpeed(this.speed);
 		this.motorRight.setSpeed(this.speed);
-		this.motorLeft.backward();
-		this.motorRight.backward();
+	
+		if (this.direction == 'F') {
+			this.motorLeft.backward();
+			this.motorRight.backward();
+		} else {
+			this.motorLeft.forward();
+			this.motorRight.forward();
+		}
 		
 		while (!this.suppressed && this.touch.isPressed()) {
 			LCD.drawString("Backward...", 0, 3);
