@@ -4,42 +4,38 @@ import lejos.nxt.*;
 import lejos.robotics.subsumption.Behavior;
 
 /**
- * Drives the robot forward.
+ * Drives the robot backward.
  */
-public class DriveForward implements Behavior {
+public class DriveBackward implements Behavior {
 	/** Indicates whether the behaviour has been supressed. */
 	private boolean suppressed = false;
 	/** Left motor. */
 	private final NXTRegulatedMotor motorLeft;
 	/** Right motor. */
 	private final NXTRegulatedMotor motorRight;
-	/** Driving speed. */
+	/** The driving speed. */
 	private final int speed;
-	/** Ultrasonic sensor. */
-	private final UltrasonicSensor sonar;
-	/** Detection distance to take control. */
-	private final int detectDistance;
+	/** The touch sensor. */
+	private final TouchSensor touch;
 	
 	/**
 	 * Creates a new instance of the class.
 	 * 
 	 * @param motorLeftPort Motor left port.
 	 * @param motorRightPort Motor right port.
-	 * @param speed Driving speed.
-	 * @param sonarPort Ultrasonic sensor port.
-	 * @param detectDistance Detection distance to take control.
+	 * @param speed The driving speed.
+	 * @param touchPort Touch sensor port.
 	 */
-	public DriveForward(MotorPort motorLeftPort, MotorPort motorRightPort, int speed, SensorPort sonarPort, int detectDistance) {
+	public DriveBackward(MotorPort motorLeftPort, MotorPort motorRightPort, int speed, SensorPort touchPort) {
 		this.motorLeft = Motor.getInstance(motorLeftPort.getId());
 		this.motorRight = Motor.getInstance(motorRightPort.getId());
 		this.speed = speed;
-		this.sonar = new UltrasonicSensor(sonarPort);
-		this.detectDistance = detectDistance;
+		this.touch = new TouchSensor(touchPort);
 	}
 
 	@Override
 	public boolean takeControl() {
-		return (this.sonar.getDistance() <= this.detectDistance);
+		return this.touch.isPressed();
 	}
 
 	@Override
@@ -53,11 +49,11 @@ public class DriveForward implements Behavior {
 		
 		this.motorLeft.setSpeed(this.speed);
 		this.motorRight.setSpeed(this.speed);
-		this.motorLeft.forward();
-		this.motorRight.forward();
+		this.motorLeft.backward();
+		this.motorRight.backward();
 		
-		while (!this.suppressed) {
-			LCD.drawString("Forward...", 0, 3);
+		while (!this.suppressed && this.touch.isPressed()) {
+			LCD.drawString("Backward...", 0, 3);
 			Thread.yield();
 		}
 	}

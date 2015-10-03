@@ -9,6 +9,8 @@ import lejos.util.Timer;
 import lejos.util.TimerListener;
 import org.intentor.yabai.constants.Asset;
 import org.intentor.yabai.constants.StateName;
+import org.intentor.yabai.controllers.RearTouchSumoController;
+import org.intentor.yabai.core.IBotController;
 import org.intentor.yabai.core.State;
 import org.intentor.yabai.valueobjects.AiParameters;
 
@@ -55,7 +57,7 @@ public class RunningState extends State implements TimerListener {
 			0, 0, 0, Graphics.LEFT | Graphics.TOP);		
 		this.graphics.fillRect(2, 1, (int)Math.floor(10 * (Battery.getVoltage() / 9.0f)), 6);		
 		
-		this.graphics.drawRegion(Asset.LOGO_IAB, 0, 0,  
+		this.graphics.drawRegion(Asset.LOGO_IAB, 0, 0,
 			Asset.LOGO_IAB.getWidth(), Asset.LOGO_IAB.getHeight(),
 			0, LCD.SCREEN_WIDTH - Asset.LOGO_IAB.getWidth(), 0, Graphics.LEFT | Graphics.TOP);
 		
@@ -77,6 +79,8 @@ public class RunningState extends State implements TimerListener {
 		if (this.counter == 0) {
 			this.timer.stop();
 			this.message = "";
+			IBotController controller = new RearTouchSumoController(this.parameters);
+			controller.start();
 		} else {
 			this.message = "Starting... " + String.valueOf(this.counter);
 		}

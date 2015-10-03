@@ -7,25 +7,37 @@ import lejos.robotics.subsumption.Behavior;
  * Stops the program.
  */
 public class StopProgram implements Behavior {
-	private boolean suppressed = false;
-
+	/** Left motor. */
+	private final NXTRegulatedMotor motorLeft;
+	/** Right motor. */
+	private final NXTRegulatedMotor motorRight;
+	
+	/**
+	 * Creates a new instance of the class.
+	 * 
+	 * @param motorLeftPort Motor left port.
+	 * @param motorRightPort Motor right port.
+	 */
+	public StopProgram(MotorPort motorLeftPort, MotorPort motorRightPort) {
+		this.motorLeft = Motor.getInstance(motorLeftPort.getId());
+		this.motorRight = Motor.getInstance(motorRightPort.getId());
+	}
+	
 	@Override
 	public boolean takeControl() {
 		int key = Button.readButtons();
-		return (key == Button.ID_ESCAPE);
+		return (key != 0);
 	}
 
 	@Override
 	public void suppress() {
-		this.suppressed = true;
+		
 	}
 
 	@Override
 	public void action() {
-		this.suppressed = false;
-		
-		Motor.A.stop();
-		Motor.B.stop();
+		this.motorLeft.stop();
+		this.motorRight.stop();
 		
 		System.exit(0);
 	}
