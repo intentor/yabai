@@ -2,6 +2,8 @@ package org.intentor.yabai.behaviours;
 
 import lejos.nxt.*;
 import lejos.robotics.subsumption.Behavior;
+import org.intentor.yabai.util.DataConverter;
+import org.intentor.yabai.valueobjects.AiParameters;
 
 /**
  * Stops the program.
@@ -15,10 +17,12 @@ public class StopProgram implements Behavior {
 	/**
 	 * Creates a new instance of the class.
 	 * 
-	 * @param motorLeftPort Motor left port.
-	 * @param motorRightPort Motor right port.
+	 * @param parameters AI parameters to configure the behaviour.
 	 */
-	public StopProgram(MotorPort motorLeftPort, MotorPort motorRightPort) {
+	public StopProgram(AiParameters parameters) {
+		MotorPort motorLeftPort = DataConverter.motorPortFromChar(parameters.motorLeft);
+		MotorPort motorRightPort = DataConverter.motorPortFromChar(parameters.motorRight);
+		
 		this.motorLeft = Motor.getInstance(motorLeftPort.getId());
 		this.motorRight = Motor.getInstance(motorRightPort.getId());
 	}

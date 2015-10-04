@@ -16,6 +16,8 @@ public final class StateName {
 	public static final String SETTINGS_SENSORS = "05";
 	/** Settings/Parameters state. */
 	public static final String SETTINGS_PARAMETERS = "06";
+	/** Settings/Parameters/Light state. */
+	public static final String SETTINGS_LIGHT = "07";
 	/** Settings/Speed state. */
-	public static final String SETTINGS_SPEED = "07";
+	public static final String SETTINGS_SPEED = "08";
 }

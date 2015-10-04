@@ -2,6 +2,8 @@ package org.intentor.yabai.behaviours;
 
 import lejos.nxt.*;
 import lejos.robotics.subsumption.Behavior;
+import org.intentor.yabai.util.DataConverter;
+import org.intentor.yabai.valueobjects.AiParameters;
 
 /**
  * Searches for a target.
@@ -19,14 +21,15 @@ public class Searching implements Behavior {
 	/**
 	 * Creates a new instance of the class.
 	 * 
-	 * @param motorLeftPort Motor left port.
-	 * @param motorRightPort Motor right port.
-	 * @param rotationSpeed Rotation speed to be applied to the motors.
+	 * @param parameters AI parameters to configure the behaviour.
 	 */
-	public Searching(MotorPort motorLeftPort, MotorPort motorRightPort, int rotationSpeed) {
+	public Searching(AiParameters parameters) {
+		MotorPort motorLeftPort = DataConverter.motorPortFromChar(parameters.motorLeft);
+		MotorPort motorRightPort = DataConverter.motorPortFromChar(parameters.motorRight);
+		
 		this.motorLeft = Motor.getInstance(motorLeftPort.getId());
 		this.motorRight = Motor.getInstance(motorRightPort.getId());
-		this.rotationSpeed = rotationSpeed;
+		this.rotationSpeed = parameters.speedRotation;
 	}
 
 	@Override

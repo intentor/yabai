@@ -5,7 +5,7 @@ package org.intentor.yabai.constants;
  */
 public final class BoundaryColor {
 	/** Black boundary color. */
-	public static final String BLACK = "B";
+	public static final char BLACK = 'B';
 	/** White boundary color. */
-	public static final String WHITE = "W";
+	public static final char WHITE = 'W';
 }

@@ -1,0 +1,23 @@
+===============================
+Differential bot rotation speed
+===============================
+
+To execute a complete turn in the same place, the bot should rotate
+two times its wheels angle axis (a complete circle).
+
+VARIABLES
+
+Wheels diameter = 43.2mm (d)
+Wheels widening = 22mm (w)
+Wheels axis distance = 120mm (a)
+
+EQUATIONS
+
+Distance by a complete rotation (D) = d * PI
+Rotation speed (S) = (a * 2) / D
+
+For the current values:
+
+S = (120 * 2) / (43.2 * 3.14159265)
+S = 240 / 135.71680248 = 1.7683882
+Sd = 1.7683882 * 360 = 636.619773095

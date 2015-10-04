@@ -14,13 +14,13 @@ public class MenuIntItem extends MenuItem {
 	/** Item value. */
 	private int value;
 	/** Minimum value. */
-	private int minValue;
+	private final int minValue;
 	/** Maximum value. */
-	private int maxValue;
+	private final int maxValue;
 	/** Step to increment/decrement. */
-	private int step;
+	private final int step;
 	/** Original label. */
-	private String originalLabel;
+	private final String originalLabel;
 	
 	/**
 	 * Creates a menu item.

@@ -2,6 +2,8 @@ package org.intentor.yabai.behaviours;
 
 import lejos.nxt.*;
 import lejos.robotics.subsumption.Behavior;
+import org.intentor.yabai.util.DataConverter;
+import org.intentor.yabai.valueobjects.AiParameters;
 
 /**
  * Drives the robot forward.
@@ -16,7 +18,7 @@ public class DriveForward implements Behavior {
 	/** Driving speed. */
 	private final int speed;
 	/** Driving direction (F/B). */
-	private char direction;
+	private final char direction;
 	/** Ultrasonic sensor. */
 	private final UltrasonicSensor sonar;
 	/** Detection distance to take control. */
@@ -25,20 +27,19 @@ public class DriveForward implements Behavior {
 	/**
 	 * Creates a new instance of the class.
 	 * 
-	 * @param motorLeftPort Motor left port.
-	 * @param motorRightPort Motor right port.
-	 * @param speed Driving speed.
-	 * @param direction Driving direction (F/B).
-	 * @param sonarPort Ultrasonic sensor port.
-	 * @param detectDistance Detection distance to take control.
+	 * @param parameters AI parameters to configure the behaviour.
 	 */
-	public DriveForward(MotorPort motorLeftPort, MotorPort motorRightPort, int speed, char direction, SensorPort sonarPort, int detectDistance) {
+	public DriveForward(AiParameters parameters) {
+		MotorPort motorLeftPort = DataConverter.motorPortFromChar(parameters.motorLeft);
+		MotorPort motorRightPort = DataConverter.motorPortFromChar(parameters.motorRight);
+		SensorPort sonarPort = DataConverter.sensorPortFromInt(parameters.sensorUltrasonic);
+		
 		this.motorLeft = Motor.getInstance(motorLeftPort.getId());
 		this.motorRight = Motor.getInstance(motorRightPort.getId());
-		this.speed = speed;
-		this.direction = direction;
+		this.speed = parameters.speedForward;
+		this.direction = parameters.forward;
 		this.sonar = new UltrasonicSensor(sonarPort);
-		this.detectDistance = detectDistance;
+		this.detectDistance = parameters.detectionDistance;
 	}
 
 	@Override
@@ -66,7 +67,7 @@ public class DriveForward implements Behavior {
 			this.motorRight.backward();
 		}
 		
-		while (!this.suppressed) {
+		while (!this.suppressed && this.sonar.getDistance() <= this.detectDistance) {
 			LCD.drawString("Forward...", 0, 3);
 			Thread.yield();
 		}

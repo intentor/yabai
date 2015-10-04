@@ -24,14 +24,18 @@ public class AiParameters {
 	/** Timer to start the AI (seconds). */
 	public int timer;
 	/** Boundary color (B/W). */
-	public String color;
+	public char color;
+	/** Maximum value to detect black. */
+	public int blackLevel;
+	/** Minimum value to detect white. */
+	public int whiteLevel;
 	/** Detection distance. */
 	public int detectionDistance;
-	/** Forward speed (degrees). */
+	/** Forward speed (degrees/second). */
 	public int speedForward;
-	/** Backward speed (degrees). */
+	/** Backward speed (degrees/second). */
 	public int speedBackward;
-	/** Rotation speed (degrees). */
+	/** Rotation speed (degrees/second). */
 	public int speedRotation;
 	/** Indicates whether forward is forward or backward (F/B). */
 	public char forward;
@@ -58,6 +62,10 @@ public class AiParameters {
 		builder.append(this.timer);
 		builder.append(SEPARATOR);
 		builder.append(this.color);
+		builder.append(SEPARATOR);
+		builder.append(this.blackLevel);
+		builder.append(SEPARATOR);
+		builder.append(this.whiteLevel);
 		builder.append(SEPARATOR);
 		builder.append(this.detectionDistance);
 		builder.append(SEPARATOR);
@@ -87,6 +95,8 @@ public class AiParameters {
 		parameters.sensorTouch = 3;
 		parameters.timer = 5;
 		parameters.color = BoundaryColor.WHITE;
+		parameters.blackLevel = 40;
+		parameters.whiteLevel = 50;
 		parameters.detectionDistance = 30;
 		parameters.speedForward = 1440;
 		parameters.speedBackward = 1440;
@@ -113,12 +123,14 @@ public class AiParameters {
 		parameters.sensorUltrasonic = Integer.parseInt(values.get(3));
 		parameters.sensorTouch = Integer.parseInt(values.get(4));
 		parameters.timer = Integer.parseInt(values.get(5));
-		parameters.color = values.get(6);
-		parameters.detectionDistance = Integer.parseInt(values.get(7));
-		parameters.speedForward = Integer.parseInt(values.get(8));
-		parameters.speedBackward = Integer.parseInt(values.get(9));
-		parameters.speedRotation = Integer.parseInt(values.get(10));
-		parameters.forward = values.get(11).charAt(0);
+		parameters.color = values.get(6).charAt(0);
+		parameters.blackLevel = Integer.parseInt(values.get(7));
+		parameters.whiteLevel = Integer.parseInt(values.get(8));
+		parameters.detectionDistance = Integer.parseInt(values.get(9));
+		parameters.speedForward = Integer.parseInt(values.get(10));
+		parameters.speedBackward = Integer.parseInt(values.get(11));
+		parameters.speedRotation = Integer.parseInt(values.get(12));
+		parameters.forward = values.get(13).charAt(0);
 		
 		return parameters;
 	}

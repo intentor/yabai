@@ -10,8 +10,6 @@ import org.intentor.yabai.valueobjects.AiParameters;
  * Settings/Parameters state.
  */
 public class ParametersState extends OptionsState {
-	/** Light sensor color values. */
-	private static final String[] COLOR_VALUES = new String[] { "W", "B" };
 	/** Forward direction. */
 	private static final String[] FORWARD_DIRECTION = new String[] { "F", "B" };
 	
@@ -25,9 +23,9 @@ public class ParametersState extends OptionsState {
 		super("Parameters", Asset.ICON_PARAMETERS,
 			new MenuItem[] { 
 				new MenuIntItem("Timer", parameters.timer, 1, 20, 1),
-				new MenuListItem("Color", parameters.color, COLOR_VALUES),
 				new MenuIntItem("Sonar", parameters.detectionDistance, 5, 170, 5),
 				new MenuListItem("Forward", String.valueOf(parameters.forward), FORWARD_DIRECTION),
+				new MenuItem("Light"),
 				new MenuItem("Back")
 			}, parameters, fileManager);
 	}
@@ -39,11 +37,12 @@ public class ParametersState extends OptionsState {
 	 */
 	@Override
 	protected void onMenuOptionSelected(int option) {
-		if (option == 4) {
+		if (option == 3) {
+			this.stateManager.start(StateName.SETTINGS_LIGHT);
+		} else if (option == 4) {
 			//Updates settings.
 			this.parameters.timer = Integer.parseInt(this.menuItems[0].getValue());
-			this.parameters.color = this.menuItems[1].getValue();
-			this.parameters.detectionDistance = Integer.parseInt(this.menuItems[2].getValue());
+			this.parameters.detectionDistance = Integer.parseInt(this.menuItems[1].getValue());
 			this.parameters.forward = this.menuItems[2].getValue().charAt(0);
 			
 			this.stateManager.start(StateName.SETTINGS);

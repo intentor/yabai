@@ -28,31 +28,13 @@ public class RearTouchSumoController implements IBotController {
 	 */
 	@Override
 	public void start() {
-		Behavior searching = new Searching(
-			DataConverter.motorPortFromChar(this.parameters.motorLeft),
-			DataConverter.motorPortFromChar(this.parameters.motorRight),
-			this.parameters.speedRotation);
+		Behavior searching = new Searching(this.parameters);
+		Behavior driveForward = new DriveForward(this.parameters);
+		Behavior driveBackward = new DriveBackward(this.parameters);
+		Behavior avoidBoundary = new AvoidBoundary(this.parameters);	
+		Behavior stopProgram = new StopProgram(this.parameters);
 		
-		Behavior driveForward = new DriveForward(
-			DataConverter.motorPortFromChar(this.parameters.motorLeft),
-			DataConverter.motorPortFromChar(this.parameters.motorRight),
-			this.parameters.speedForward,
-			this.parameters.forward,
-			DataConverter.sensorPortFromInt(this.parameters.sensorUltrasonic),
-			this.parameters.detectionDistance);
-		
-		Behavior driveBackward = new DriveBackward(
-			DataConverter.motorPortFromChar(this.parameters.motorLeft),
-			DataConverter.motorPortFromChar(this.parameters.motorRight),
-			this.parameters.speedBackward,
-			this.parameters.forward,
-			DataConverter.sensorPortFromInt(this.parameters.sensorTouch));	
-		
-		Behavior stopProgram = new StopProgram(
-			DataConverter.motorPortFromChar(this.parameters.motorLeft),
-			DataConverter.motorPortFromChar(this.parameters.motorRight));		
-		
-		Behavior[] behaviours = { searching, driveForward, driveBackward, stopProgram };
+		Behavior[] behaviours = { searching, driveForward, driveBackward, avoidBoundary, stopProgram };
 		
 		Arbitrator arbitrator = new Arbitrator(behaviours);
 		arbitrator.start();
