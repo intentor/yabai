@@ -1,16 +1,16 @@
-package org.intentor.yabai.behaviours;
+package org.intentor.yabai.behaviors;
 
 import lejos.nxt.*;
 import lejos.robotics.subsumption.Behavior;
+import lejos.util.Delay;
 import org.intentor.yabai.util.DataConverter;
+import org.intentor.yabai.util.LightUtils;
 import org.intentor.yabai.valueobjects.AiParameters;
 
 /**
- * Drives the robot backward.
+ * Avoids boundaries by using the light sensor to detect a huge change in color.
  */
-public class DriveBackward implements Behavior {
-	/** Indicates whether the behaviour has been supressed. */
-	private boolean suppressed = false;
+public class AvoidBoundary implements Behavior {
 	/** Left motor. */
 	private final NXTRegulatedMotor motorLeft;
 	/** Right motor. */
@@ -19,43 +19,47 @@ public class DriveBackward implements Behavior {
 	private final int speed;
 	/** Driving direction (F/B). */
 	private final char direction;
-	/** Touch sensor. */
-	private final TouchSensor touch;
+	/** Light sensor. */
+	private final LightSensor light;
+	/** Color to detect (B/W). */
+	private final char color;
+	/** Maximum light value to detect black. */
+	private final int blackLevel;
+	/** Minimum light value to detect white. */
+	private final int whiteLevel;
 	
 	/**
 	 * Creates a new instance of the class.
 	 * 
 	 * @param parameters AI parameters to configure the behaviour.
 	 */
-	public DriveBackward(AiParameters parameters) {
+	public AvoidBoundary(AiParameters parameters) {
 		MotorPort motorLeftPort = DataConverter.motorPortFromChar(parameters.motorLeft);
 		MotorPort motorRightPort = DataConverter.motorPortFromChar(parameters.motorRight);
-		SensorPort touchPort = DataConverter.sensorPortFromInt(parameters.sensorTouch);
+		SensorPort lightPort = DataConverter.sensorPortFromInt(parameters.sensorLight);
 		
 		this.motorLeft = Motor.getInstance(motorLeftPort.getId());
 		this.motorRight = Motor.getInstance(motorRightPort.getId());
-		this.speed = parameters.speedBackward;
+		this.speed = parameters.speedForward;
 		this.direction = parameters.forward;
-		this.touch = new TouchSensor(touchPort);
+		this.light = new LightSensor(lightPort);
+		this.color = parameters.color;
+		this.blackLevel = parameters.blackLevel;
+		this.whiteLevel = parameters.whiteLevel;
 	}
 
 	@Override
 	public boolean takeControl() {
-		return this.touch.isPressed();
+		return LightUtils.checkColor(this.light.readValue(), this.color, this.blackLevel, this.whiteLevel);
 	}
 
 	@Override
 	public void suppress() {
-		this.suppressed = true;
+		
 	}
 
 	@Override
-	public void action() {
-		this.suppressed = false;
-		
-		this.motorLeft.setSpeed(this.speed);
-		this.motorRight.setSpeed(this.speed);
-	
+	public void action() {		
 		if (this.direction == 'F') {
 			this.motorLeft.backward();
 			this.motorRight.backward();
@@ -64,9 +68,12 @@ public class DriveBackward implements Behavior {
 			this.motorRight.forward();
 		}
 		
-		while (!this.suppressed && this.touch.isPressed()) {
-			LCD.drawString("Backward...", 0, 3);
-			Thread.yield();
-		}
+		this.motorLeft.setSpeed(this.speed);
+		this.motorRight.setSpeed(this.speed);
+				
+		Delay.msDelay(1000);
+		
+		this.motorLeft.stop();
+		this.motorRight.stop();
 	}
 }

@@ -46,7 +46,7 @@ public class RunningState extends State implements TimerListener {
 		
 		this.timer.start();
 	}
-	private static final int[] note = {2349, 115, 0, 5};
+	
 	@Override
 	public void update() {
 		LCD.clear();		

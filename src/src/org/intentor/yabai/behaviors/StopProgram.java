@@ -1,4 +1,4 @@
-package org.intentor.yabai.behaviours;
+package org.intentor.yabai.behaviors;
 
 import lejos.nxt.*;
 import lejos.robotics.subsumption.Behavior;

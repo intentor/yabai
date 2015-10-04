@@ -25,9 +25,9 @@ public class AiParameters {
 	public int timer;
 	/** Boundary color (B/W). */
 	public char color;
-	/** Maximum value to detect black. */
+	/** Maximum light value to detect black. */
 	public int blackLevel;
-	/** Minimum value to detect white. */
+	/** Minimum light value to detect white. */
 	public int whiteLevel;
 	/** Detection distance. */
 	public int detectionDistance;
@@ -98,9 +98,9 @@ public class AiParameters {
 		parameters.blackLevel = 40;
 		parameters.whiteLevel = 50;
 		parameters.detectionDistance = 30;
-		parameters.speedForward = 1440;
-		parameters.speedBackward = 1440;
-		parameters.speedRotation = 1080;
+		parameters.speedForward = 720;
+		parameters.speedBackward = 720;
+		parameters.speedRotation = 720;
 		parameters.forward = 'F';
 		
 		return parameters;

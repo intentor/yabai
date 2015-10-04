@@ -25,6 +25,7 @@ public class LightState extends OptionsState {
 				new MenuListItem("Color", String.valueOf(parameters.color), COLOR_VALUES),
 				new MenuIntItem("Black", parameters.blackLevel, 0, 100, 1),
 				new MenuIntItem("White", parameters.whiteLevel, 0, 100, 1),
+				new MenuItem("Test"),
 				new MenuItem("Back")
 			}, parameters, fileManager);
 	}
@@ -36,12 +37,14 @@ public class LightState extends OptionsState {
 	 */
 	@Override
 	protected void onMenuOptionSelected(int option) {
-		if (option == 3) {
-			//Updates settings.
-			this.parameters.color = this.menuItems[0].getValue().charAt(0);
-			this.parameters.blackLevel = Integer.parseInt(this.menuItems[1].getValue());
-			this.parameters.whiteLevel = Integer.parseInt(this.menuItems[2].getValue());
+		//Updates settings.
+		this.parameters.color = this.menuItems[0].getValue().charAt(0);
+		this.parameters.blackLevel = Integer.parseInt(this.menuItems[1].getValue());
+		this.parameters.whiteLevel = Integer.parseInt(this.menuItems[2].getValue());
 			
+		if (option == 3) {
+			this.stateManager.start(StateName.SETTINGS_LIGHT_TEST);
+		} else if (option == 4) {			
 			this.stateManager.start(StateName.SETTINGS_PARAMETERS);
 		}
 	}

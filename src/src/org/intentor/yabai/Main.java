@@ -35,6 +35,7 @@ public class Main {
 		stateManager.add(StateName.SETTINGS_SENSORS, new SensorsState(parameters, file));
 		stateManager.add(StateName.SETTINGS_PARAMETERS, new ParametersState(parameters, file));
 		stateManager.add(StateName.SETTINGS_LIGHT, new LightState(parameters, file));
+		stateManager.add(StateName.SETTINGS_LIGHT_TEST, new LightTestState(parameters));
 		stateManager.add(StateName.SETTINGS_SPEED, new SpeedState(parameters, file));
 		
 		stateManager.start(StateName.HOME);

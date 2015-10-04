@@ -1,8 +1,12 @@
 package org.intentor.yabai.controllers;
 
+import org.intentor.yabai.behaviors.StopProgram;
+import org.intentor.yabai.behaviors.DriveBackward;
+import org.intentor.yabai.behaviors.AvoidBoundary;
+import org.intentor.yabai.behaviors.Searching;
+import org.intentor.yabai.behaviors.DriveForward;
 import lejos.robotics.subsumption.Arbitrator;
 import lejos.robotics.subsumption.Behavior;
-import org.intentor.yabai.behaviours.*;
 import org.intentor.yabai.core.IBotController;
 import org.intentor.yabai.util.DataConverter;
 import org.intentor.yabai.valueobjects.AiParameters;
