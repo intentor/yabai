@@ -16,10 +16,14 @@ public final class StateName {
 	public static final String SETTINGS_SENSORS = "05";
 	/** Settings/Parameters state. */
 	public static final String SETTINGS_PARAMETERS = "06";
-	/** Settings/Parameters/Light state. */
-	public static final String SETTINGS_LIGHT = "07";
-	/** Settings/Parameters/Light/Light Test state. */
-	public static final String SETTINGS_LIGHT_TEST = "08";
 	/** Settings/Speed state. */
-	public static final String SETTINGS_SPEED = "09";
+	public static final String SETTINGS_SPEED = "07";
+	/** Settings/Parameters/Light state. */
+	public static final String SETTINGS_LIGHT = "08";
+	/** Settings/Parameters/Sonar state. */
+	public static final String SETTINGS_ULTRASONIC = "09";
+	/** Settings/Parameters/Light/Light Test state. */
+	public static final String TEST_LIGHT = "10";
+	/** Settings/Parameters/Sonar/Sonar Test state. */
+	public static final String TEST_ULTRASONIC = "11";
 }

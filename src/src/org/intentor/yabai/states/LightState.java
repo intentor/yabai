@@ -43,7 +43,7 @@ public class LightState extends OptionsState {
 		this.parameters.whiteLevel = Integer.parseInt(this.menuItems[2].getValue());
 			
 		if (option == 3) {
-			this.stateManager.start(StateName.SETTINGS_LIGHT_TEST);
+			this.stateManager.start(StateName.TEST_LIGHT);
 		} else if (option == 4) {			
 			this.stateManager.start(StateName.SETTINGS_PARAMETERS);
 		}

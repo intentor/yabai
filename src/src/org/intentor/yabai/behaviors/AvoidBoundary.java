@@ -48,9 +48,15 @@ public class AvoidBoundary implements Behavior {
 		this.whiteLevel = parameters.whiteLevel;
 	}
 
+	int counter;
+	
 	@Override
 	public boolean takeControl() {
-		return LightUtils.checkColor(this.light.readValue(), this.color, this.blackLevel, this.whiteLevel);
+		if (++counter > 10) {
+			return LightUtils.checkColor(this.light.readValue(), this.color, this.blackLevel, this.whiteLevel);
+		} else {
+			return false;
+		}
 	}
 
 	@Override
@@ -71,7 +77,7 @@ public class AvoidBoundary implements Behavior {
 		this.motorLeft.setSpeed(this.speed);
 		this.motorRight.setSpeed(this.speed);
 				
-		Delay.msDelay(1000);
+		Delay.msDelay(500);
 		
 		this.motorLeft.stop();
 		this.motorRight.stop();
