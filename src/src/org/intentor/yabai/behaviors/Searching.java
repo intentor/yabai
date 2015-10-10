@@ -2,6 +2,7 @@ package org.intentor.yabai.behaviors;
 
 import lejos.nxt.*;
 import lejos.robotics.subsumption.Behavior;
+import org.intentor.yabai.constants.RotationDirection;
 import org.intentor.yabai.util.DataConverter;
 import org.intentor.yabai.valueobjects.AiParameters;
 
@@ -17,6 +18,8 @@ public class Searching implements Behavior {
 	private final NXTRegulatedMotor motorRight;
 	/** Rotation speed to be applied to the motors. */
 	private final int rotationSpeed;
+	/** Rotation direction. */
+	private final char rotationDirection;
 	
 	/**
 	 * Creates a new instance of the class.
@@ -30,6 +33,7 @@ public class Searching implements Behavior {
 		this.motorLeft = Motor.getInstance(motorLeftPort.getId());
 		this.motorRight = Motor.getInstance(motorRightPort.getId());
 		this.rotationSpeed = parameters.speedRotation;
+		this.rotationDirection = parameters.rotation;
 	}
 
 	@Override
@@ -48,8 +52,14 @@ public class Searching implements Behavior {
 		
 		this.motorLeft.setSpeed(this.rotationSpeed);
 		this.motorRight.setSpeed(this.rotationSpeed);
-		this.motorLeft.forward();
-		this.motorRight.backward();
+		
+		if (this.rotationDirection == RotationDirection.LEFT) {
+			this.motorLeft.forward();
+			this.motorRight.backward();
+		} else {
+			this.motorLeft.backward();
+			this.motorRight.forward();
+		}
 		
 		while (!this.suppressed) {
 			LCD.drawString("Searching...", 0, 3);

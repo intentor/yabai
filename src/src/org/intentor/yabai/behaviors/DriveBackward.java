@@ -2,6 +2,7 @@ package org.intentor.yabai.behaviors;
 
 import lejos.nxt.*;
 import lejos.robotics.subsumption.Behavior;
+import org.intentor.yabai.constants.MovementDirection;
 import org.intentor.yabai.util.DataConverter;
 import org.intentor.yabai.valueobjects.AiParameters;
 
@@ -56,7 +57,7 @@ public class DriveBackward implements Behavior {
 		this.motorLeft.setSpeed(this.speed);
 		this.motorRight.setSpeed(this.speed);
 	
-		if (this.direction == 'F') {
+		if (this.direction == MovementDirection.FORWARD) {
 			this.motorLeft.backward();
 			this.motorRight.backward();
 		} else {
