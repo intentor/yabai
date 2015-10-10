@@ -7,7 +7,7 @@ import org.intentor.yabai.util.*;
 import org.intentor.yabai.valueobjects.AiParameters;
 
 /**
- * Settings/Motors ports state.
+ * Configures motors ports.
  */
 public class MotorsState extends OptionsState {
 	/** Motor ports. */

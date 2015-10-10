@@ -7,7 +7,7 @@ import org.intentor.yabai.util.*;
 import org.intentor.yabai.valueobjects.AiParameters;
 
 /**
- * Settings/Sensors ports state.
+ * Configures sensors ports.
  */
 public class SensorsState extends OptionsState {
 	/** Sensor ports. */

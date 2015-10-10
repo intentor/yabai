@@ -3,6 +3,8 @@ package org.intentor.yabai.valueobjects;
 import org.intentor.yabai.constants.BoundaryColor;
 import org.intentor.yabai.util.StringUtils;
 import java.util.List;
+import org.intentor.yabai.constants.MovementDirection;
+import org.intentor.yabai.constants.RotationDirection;
 
 /**
  * AI parameters.
@@ -39,6 +41,8 @@ public class AiParameters {
 	public int speedRotation;
 	/** Indicates whether forward is forward or backward (F/B). */
 	public char forward;
+	/** Indicates the direction of the rotation wheen searching (L/R). */
+	public char rotation;
 	
 	/**
 	 * Serializes the current instance as string.
@@ -76,6 +80,8 @@ public class AiParameters {
 		builder.append(this.speedRotation);
 		builder.append(SEPARATOR);
 		builder.append(this.forward);
+		builder.append(SEPARATOR);
+		builder.append(this.rotation);
 		
 		return builder.toString();
 	}
@@ -101,7 +107,8 @@ public class AiParameters {
 		parameters.speedForward = 720;
 		parameters.speedBackward = 720;
 		parameters.speedRotation = 720;
-		parameters.forward = 'F';
+		parameters.forward = MovementDirection.FORWARD;
+		parameters.rotation = RotationDirection.LEFT;
 		
 		return parameters;
 	}
@@ -131,6 +138,7 @@ public class AiParameters {
 		parameters.speedBackward = Integer.parseInt(values.get(11));
 		parameters.speedRotation = Integer.parseInt(values.get(12));
 		parameters.forward = values.get(13).charAt(0);
+		parameters.rotation = values.get(14).charAt(0);
 		
 		return parameters;
 	}

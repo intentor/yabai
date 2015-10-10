@@ -7,11 +7,9 @@ import org.intentor.yabai.util.*;
 import org.intentor.yabai.valueobjects.AiParameters;
 
 /**
- * Settings/Parameters state.
+ * Configures general parameters.
  */
 public class ParametersState extends OptionsState {
-	/** Forward direction. */
-	private static final String[] FORWARD_DIRECTION = new String[] { "F", "B" };
 	
 	/**
 	 * Creates a new instance of the class.
@@ -23,7 +21,6 @@ public class ParametersState extends OptionsState {
 		super("Parameters", Asset.ICON_PARAMETERS,
 			new MenuItem[] { 
 				new MenuIntItem("Timer", parameters.timer, 1, 20, 1),
-				new MenuListItem("Forward", String.valueOf(parameters.forward), FORWARD_DIRECTION),
 				new MenuItem("Light"),
 				new MenuItem("Ultrasonic"),
 				new MenuItem("Back")
@@ -37,14 +34,13 @@ public class ParametersState extends OptionsState {
 	 */
 	@Override
 	protected void onMenuOptionSelected(int option) {
-		if (option == 2) {
+		if (option == 1) {
 			this.stateManager.start(StateName.SETTINGS_LIGHT);
-		} else if (option == 3) {
+		} else if (option == 2) {
 			this.stateManager.start(StateName.SETTINGS_ULTRASONIC);
-		} else if (option == 4) {
+		} else if (option == 3) {
 			//Updates settings.
 			this.parameters.timer = Integer.parseInt(this.menuItems[0].getValue());
-			this.parameters.forward = this.menuItems[1].getValue().charAt(0);
 			
 			this.stateManager.start(StateName.SETTINGS);
 		}

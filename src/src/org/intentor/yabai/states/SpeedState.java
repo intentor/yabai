@@ -7,7 +7,7 @@ import org.intentor.yabai.util.*;
 import org.intentor.yabai.valueobjects.AiParameters;
 
 /**
- * Settings/Speed configurations view.
+ * Configures speed parameters.
  */
 public class SpeedState extends OptionsState {
 	/**
@@ -22,11 +22,10 @@ public class SpeedState extends OptionsState {
 				new MenuIntItem("Front", parameters.speedForward, 180, 2160, 30),				
 				new MenuIntItem("Back", parameters.speedBackward, 180, 2160, 30),
 				new MenuIntItem("Rotate", parameters.speedRotation, 180, 2160, 30),
+				new MenuItem("Directions"),
 				new MenuItem("Back")
 			}, parameters, fileManager);
 	}
-	
-	
 	
 	/**
 	 * Called when a menu option is selected.
@@ -36,6 +35,8 @@ public class SpeedState extends OptionsState {
 	@Override
 	protected void onMenuOptionSelected(int option) {
 		if (option == 3) {
+			this.stateManager.start(StateName.SETTINGS_DIRECTIONS);
+		} else if (option == 4) {
 			//Updates settings.
 			this.parameters.speedForward = Integer.parseInt(this.menuItems[0].getValue());
 			this.parameters.speedBackward = Integer.parseInt(this.menuItems[1].getValue());

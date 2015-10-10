@@ -7,7 +7,7 @@ import org.intentor.yabai.util.*;
 import org.intentor.yabai.valueobjects.AiParameters;
 
 /**
- * Settings/Parameters/Light state.
+ * Configures the light sensor.
  */
 public class LightState extends OptionsState {
 	/** Light sensor color values. */

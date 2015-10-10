@@ -7,7 +7,7 @@ import org.intentor.yabai.util.MenuItem;
 import org.intentor.yabai.valueobjects.AiParameters;
 
 /**
- * Settings home state.
+ * Displays the main settings menu.
  */
 public class SettingsState extends OptionsState {
 	/**

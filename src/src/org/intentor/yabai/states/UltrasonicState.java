@@ -7,7 +7,7 @@ import org.intentor.yabai.util.*;
 import org.intentor.yabai.valueobjects.AiParameters;
 
 /**
- * Settings/Parameters/Ultrasonic state.
+ * Configures the ultrasonic sensor.
  */
 public class UltrasonicState extends OptionsState {	
 	/**

@@ -35,6 +35,7 @@ public class Main {
 		stateManager.add(StateName.SETTINGS_SENSORS, new SensorsState(parameters, file));
 		stateManager.add(StateName.SETTINGS_PARAMETERS, new ParametersState(parameters, file));
 		stateManager.add(StateName.SETTINGS_SPEED, new SpeedState(parameters, file));
+		stateManager.add(StateName.SETTINGS_DIRECTIONS, new DirectionsState(parameters, file));
 		stateManager.add(StateName.SETTINGS_LIGHT, new LightState(parameters, file));
 		stateManager.add(StateName.SETTINGS_ULTRASONIC, new UltrasonicState(parameters, file));
 		stateManager.add(StateName.TEST_LIGHT, new TestLightState(parameters));

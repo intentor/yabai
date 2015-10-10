@@ -14,7 +14,7 @@ import org.intentor.yabai.core.State;
 import org.intentor.yabai.valueobjects.AiParameters;
 
 /**
- * Runs the behaviours.
+ * Runs the behaviours that executes the AI.
  */
 public class RunningState extends State implements TimerListener {
 	/** Timeout to wait for button press (milliseconds). */
