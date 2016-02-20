@@ -8,8 +8,7 @@ import org.intentor.yabai.states.*;
 import org.intentor.yabai.valueobjects.AiParameters;
 
 /**
- * Example leJOS Project with an ant build file
- *
+ * Program entry.
  */
 public class Main {
 	/** Program version. */
