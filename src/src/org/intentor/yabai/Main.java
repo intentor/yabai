@@ -12,7 +12,7 @@ import org.intentor.yabai.valueobjects.AiParameters;
  */
 public class Main {
 	/** Program version. */
-	public static final String VERSION = "0.2";
+	public static final String VERSION = "0.3";
 	
 	public static void main(String[] args) {		
 		FileManager file = new FileManager(FileName.DATA_FILE_NAME);
@@ -25,9 +25,9 @@ public class Main {
 			parameters = AiParameters.createFromString(data);
 		}	
 		
-		StateManager stateManager = new StateManager();		
+		StateManager stateManager = new StateManager();
 		
-		stateManager.add(StateName.HOME, new HomeState(VERSION));
+		stateManager.add(StateName.HOME, new HomeState(VERSION, parameters));
 		stateManager.add(StateName.RUNNING, new RunningState(parameters));
 		stateManager.add(StateName.SETTINGS, new SettingsState(parameters, file));
 		stateManager.add(StateName.SETTINGS_MOTORS, new MotorsState(parameters, file));

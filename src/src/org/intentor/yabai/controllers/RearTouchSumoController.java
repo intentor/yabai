@@ -28,6 +28,7 @@ public class RearTouchSumoController implements IBotController {
 	 * Creates a new instance of the class.
 	 * 
 	 * @param parameters AI parameters.
+	 * @param startDirection Direction to start the movement.
 	 */
 	public RearTouchSumoController(AiParameters parameters) {
 		this.parameters = parameters;

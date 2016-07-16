@@ -4,28 +4,41 @@ import javax.microedition.lcdui.Graphics;
 import lejos.nxt.LCD;
 import org.intentor.yabai.constants.StateName;
 import org.intentor.yabai.constants.Asset;
+import org.intentor.yabai.constants.RotationDirection;
 import org.intentor.yabai.core.State;
 import org.intentor.yabai.util.Menu;
 import org.intentor.yabai.util.MenuItem;
+import org.intentor.yabai.valueobjects.AiParameters;
 
 /**
  * Home state.
  */
 public class HomeState extends State {
 	/** View menu items. */
-	private final MenuItem[] menuItems = { 
-		new MenuItem("Start"),
+	private final MenuItem[] menuItems = {
+		new MenuItem("Start Left"),
+		new MenuItem("Start Right"),
 		new MenuItem("Settings"),
 		new MenuItem("Exit")
 	};
 	
 	/** Program version. */
 	private final String version;
+	/** AI parameters. */
+	protected AiParameters parameters;
 	/** Main menu. */
 	private Menu menu;
 	
-	public HomeState(String version) {
+	
+	/**
+	 * Creates a new instance of the class.
+	 * 
+	 * @param version Program version.
+	 * @param parameters AI parameters.
+	 */
+	public HomeState(String version, AiParameters parameters) {
 		this.version = "v" + version;
+		this.parameters = parameters;
 	}
 	
 	@Override
@@ -51,12 +64,17 @@ public class HomeState extends State {
 		int selection = menu.select();
 		switch (selection) {
 			case 0:
+				this.parameters.rotation = RotationDirection.LEFT;
 				this.stateManager.start(StateName.RUNNING);
 			break;
 			case 1:
-				this.stateManager.start(StateName.SETTINGS);
+				this.parameters.rotation = RotationDirection.RIGHT;
+				this.stateManager.start(StateName.RUNNING);
 			break;
 			case 2:
+				this.stateManager.start(StateName.SETTINGS);
+			break;
+			case 3:
 				System.exit(0);
 			break;
 		}
