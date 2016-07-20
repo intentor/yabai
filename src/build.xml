@@ -13,12 +13,12 @@
 	<fail unless="lejos.pc.exists" message="nxj.home variable incorrect, ${nxj.home}/lib/pc does not exist" />
 	<fail unless="lejos.nxt.exists" message="nxj.home variable incorrect, ${nxj.home}/lib/nxt does not exist" />
 
-	<!-- define the search paths -->
 	<path id="lejos.pc">
 		<fileset dir="${nxj.home}/lib/pc">
 			<include name="**/*.jar" />
 		</fileset>
 	</path>
+
 	<path id="lejos.nxt">
 		<fileset dir="${nxj.home}/lib/nxt">
 			<include name="**/*.jar" />
@@ -50,8 +50,7 @@
 			debug="true"
 			includeAntRuntime="false"
 			includeJavaRuntime="false"
-			verbose="false"
-		>
+			verbose="false">
 			<bootclasspath refid="lejos.nxt" />
 			<!-- enable warnings -->
 			<compilerarg value="-Xlint:${source.warn}" />
@@ -157,16 +156,13 @@
 	<target name="debugtool" description="run the debug tool">
 		  <input
 		    message="Exception class:"
-		    addproperty="class"
-		  />
+		    addproperty="class" />
 		  <input
 		    message="Method number:"
-		    addproperty="method"
-		  />
+		    addproperty="method" />
 		  <input
 		    message="PC value:"
-		    addproperty="pc"
-		  />
+		    addproperty="pc" />
 		<java classname="lejos.pc.tools.NXJDebugTool" fork="true" failonerror="true">
 			<sysproperty key="nxj.home" file="${nxj.home}"/>
 			<classpath refid="lejos.pc" />
@@ -193,8 +189,7 @@
 			author="true"
 			access="protected"
 			windowtitle="Project documentation"
-			verbose="false"
-		>
+			verbose="false">
 			<bootclasspath refid="lejos.nxt" />
 			<!--
 				Without this, there are some JDK jars in the classpath.
@@ -205,8 +200,7 @@
 			
 			<packageset	dir="${source.dir}"
 				includes="${source.include}"
-				excludes="${source.exclude}"
-			/>
+				excludes="${source.exclude}" />
 		</javadoc>
 	</target>
 
@@ -216,21 +210,6 @@
     		destfile="${dist.zip}"
     		basedir="${basedir}"
     		includes="${dist.include}"
-    		excludes="${dist.exclude}"
-    	/>
-	</target>
-	
-
-	<!--  used only for modifying the Netbeans NXJPlugin -->
-	<target name="Zip for Netbeans" description="Zip the application to the sample project">
-		<property name="plugin" location="../NXJPlugin/src/nxjplugin/" />
-		<zip basedir="." destfile="${plugin}/NXJSampleProject.zip">
-			<exclude name="build/**" />
-			<exclude name="bin/**" />
-			<exclude name="dist/**" />
-			<exclude name="nbproject/private/**" />
-			<exclude name=".project" />
-			<exclude name=".classpath" />
-		</zip>
+    		excludes="${dist.exclude}" />
 	</target>
 </project>
