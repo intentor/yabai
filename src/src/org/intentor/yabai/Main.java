@@ -12,7 +12,7 @@ import org.intentor.yabai.valueobjects.AiParameters;
  */
 public class Main {
 	/** Program version. */
-	public static final String VERSION = "0.3";
+	public static final String VERSION = "0.4";
 	
 	public static void main(String[] args) {		
 		FileManager file = new FileManager(FileName.DATA_FILE_NAME);
