@@ -43,7 +43,8 @@ public class RunningState extends State implements TimerListener {
 		this.timer = new Timer(1000, this);
 		this.counter = this.parameters.timer;
 		this.message = "Starting... " + String.valueOf(this.counter);
-		
+
+		this.timedOut();
 		this.timer.start();
 	}
 	
@@ -55,7 +56,9 @@ public class RunningState extends State implements TimerListener {
 			Asset.LOGO_IAB.getWidth(), Asset.LOGO_IAB.getHeight(),
 			0, LCD.SCREEN_WIDTH - Asset.LOGO_IAB.getWidth(), 0, Graphics.LEFT | Graphics.TOP);
 		
-		LCD.drawString(this.message, 0, 3);
+		if (this.message != null) {
+		    LCD.drawString(this.message, 0, 3);
+        }
 		LCD.drawString("Press to stop", 0, LCD.DISPLAY_CHAR_DEPTH - 1);
 		
 		int button = Button.waitForAnyPress(BUTTON_POLL_INTERVAL);		
@@ -72,11 +75,11 @@ public class RunningState extends State implements TimerListener {
 		
 		if (this.counter == 0) {
 			this.timer.stop();
-			this.message = "";
+			this.message = null;
 			IBotController controller = new RearTouchSumoController(this.parameters);
 			controller.start();
 		} else {
-			this.message = "Starting... " + String.valueOf(this.counter);
+			this.message = "Starting... " + String.valueOf((this.counter + 1));
 		}
 	}
 }
