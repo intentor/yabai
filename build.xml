@@ -32,17 +32,16 @@
 	</condition>
 
 	<!-- deletes generated files -->
-	<target name="clean" description="clean up all generated files">
+	<target name="clean" description="Clean up all generated files">
 		<delete dir="${build.dir}" />
 	</target>
 
-	<target name="compile" depends="clean" description="compile the source ">
+	<target name="compile" depends="clean" description="Compile the source">
 		<!-- Compile the java code from ${source.dir} to ${classes.dir}  -->
 		<mkdir dir="${classes.dir}" />
 		<javac
 			srcdir="${source.dir}"
 			includes="${source.include}"
-			excludes="${source.exclude}"
 			encoding="${source.encoding}"
 			source="${source.version}"
 			target="${target.version}"
@@ -63,7 +62,7 @@
 		</javac>
 	</target>
 
-	<target name="link" depends="compile" description="link the binary ">
+	<target name="link" depends="compile" description="Link the binary ">
 		<!-- Link the binary and create a signature file -->
 		<java classname="lejos.pc.tools.NXJLink" failonerror="true">
 			<classpath refid="lejos.pc" />
@@ -82,7 +81,7 @@
 		</java>
 	</target>
 	
-	<target name="debuglink" depends="compile" description="link the binary">
+	<target name="debuglink" depends="compile" description="Link the binary">
 		<!-- Link the binary and create a signature file -->
 		<java classname="lejos.pc.tools.NXJLink" failonerror="true">
 			<classpath refid="lejos.pc" />
@@ -102,7 +101,7 @@
 		</java>
 	</target>
 	
-	<target name="upload" depends="link" description="upload the binary">
+	<target name="upload" depends="link" description="Upload the binary">
 		<java classname="lejos.pc.tools.NXJUpload" fork="true" failonerror="true">
 			<sysproperty key="nxj.home" file="${nxj.home}"/>
 			<jvmarg value="${d32Flag}" />
@@ -111,7 +110,7 @@
 		</java>
 	</target>
 	
-	<target name="uploadandrun" depends="link" description="upload and run the binary">
+	<target name="uploadandrun" depends="link" description="Upload and run the binary">
 		<java classname="lejos.pc.tools.NXJUpload" fork="true" failonerror="true">
 			<sysproperty key="nxj.home" file="${nxj.home}"/>
 			<jvmarg value="${d32Flag}" />
@@ -121,7 +120,7 @@
 		</java>
 	</target>
 	
-	<target name="debuguploadandrun" depends="debuglink" description="upload and run the binary">
+	<target name="debuguploadandrun" depends="debuglink" description="Upload and run the binary">
 		<java classname="lejos.pc.tools.NXJUpload" fork="true" failonerror="true">
 			<sysproperty key="nxj.home" file="${nxj.home}"/>
 			<jvmarg value="${d32Flag}" />
@@ -131,7 +130,7 @@
 		</java>
 	</target>
 	
-	<target name="console" depends="debuguploadandrun" description="run a console">
+	<target name="console" depends="debuguploadandrun" description="Run a console">
 		<sleep seconds="4" />
 		<java classname="lejos.pc.tools.NXJConsole" fork="true" failonerror="true">
 			<sysproperty key="nxj.home" file="${nxj.home}"/>
@@ -142,7 +141,7 @@
 		</java>
 	</target>
 	
-	<target name="consoleviewer" depends="debuguploadandrun" description="run the GUI Console Viewer">
+	<target name="consoleviewer" depends="debuguploadandrun" description="Run the GUI Console Viewer">
 		<sleep seconds="4" />
 		<java classname="lejos.pc.tools.NXJConsoleViewer" fork="true" failonerror="true">
 			<sysproperty key="nxj.home" file="${nxj.home}"/>
@@ -153,7 +152,7 @@
 		</java>
 	</target>
 	
-	<target name="debugtool" description="run the debug tool">
+	<target name="debugtool" description="Run the debug tool">
 		  <input
 		    message="Exception class:"
 		    addproperty="class" />
@@ -174,42 +173,5 @@
 			<arg value="${method}" />
 			<arg value="${pc}" />
 		</java>
-	</target>
-	
-	<!-- generate javadocs -->
-	<target name="docs" description="generate javadocs">
-		<delete dir="${docs.dir}" />
-    	<mkdir dir="${docs.dir}" />
-		<javadoc
-			destdir="${docs.dir}"
-			source="${source.version}"
-			encoding="${source.encoding}"
-			charset="utf-8"
-			locale="en_US"
-			author="true"
-			access="protected"
-			windowtitle="Project documentation"
-			verbose="false">
-			<bootclasspath refid="lejos.nxt" />
-			<!--
-				Without this, there are some JDK jars in the classpath.
-				Set verbose=true to check that the classpath is really clean.
-			-->
-    		<arg value="-extdirs" />
-    		<arg value="" />
-			
-			<packageset	dir="${source.dir}"
-				includes="${source.include}"
-				excludes="${source.exclude}" />
-		</javadoc>
-	</target>
-
-	<!-- zip the project -->
-	<target name="dist.zip" description="generate zip of sources">
-    	<zip
-    		destfile="${dist.zip}"
-    		basedir="${basedir}"
-    		includes="${dist.include}"
-    		excludes="${dist.exclude}" />
 	</target>
 </project>
