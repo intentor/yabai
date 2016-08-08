@@ -1,13 +1,13 @@
-<project name="org.intentor.yabai" default="uploadandrun">
+<project name="org.intentor.yabai">
 	<description>
     	Yab AI build file
     </description>
 
-	<!-- set properties for this build -->
+	<!-- Set properties for this build. -->
 	<property environment="env" />
 	<property file="build.properties" />
 
-	<!-- check whether nxj.home is correct -->
+	<!-- Check whether nxj.home is correct. -->
 	<available file="${nxj.home}/lib/pc" property="lejos.pc.exists" />
 	<available file="${nxj.home}/lib/nxt" property="lejos.nxt.exists" />
 	<fail unless="lejos.pc.exists" message="nxj.home variable incorrect, ${nxj.home}/lib/pc does not exist" />
@@ -31,13 +31,11 @@
 		</and>
 	</condition>
 
-	<!-- deletes generated files -->
-	<target name="clean" description="Clean up all generated files">
+	<target name="clean" description="Clean up all generated files.">
 		<delete dir="${build.dir}" />
 	</target>
 
-	<target name="compile" depends="clean" description="Compile the source">
-		<!-- Compile the java code from ${source.dir} to ${classes.dir}  -->
+	<target name="compile" depends="clean" description="Compile the source code.">
 		<mkdir dir="${classes.dir}" />
 		<javac
 			srcdir="${source.dir}"
@@ -62,8 +60,7 @@
 		</javac>
 	</target>
 
-	<target name="link" depends="compile" description="Link the binary ">
-		<!-- Link the binary and create a signature file -->
+	<target name="link" depends="compile" description="Link the binary and create a signature file.">
 		<java classname="lejos.pc.tools.NXJLink" failonerror="true">
 			<classpath refid="lejos.pc" />
 			<arg value="--bootclasspath" />
@@ -81,8 +78,7 @@
 		</java>
 	</target>
 	
-	<target name="debuglink" depends="compile" description="Link the binary">
-		<!-- Link the binary and create a signature file -->
+	<target name="debugLink" depends="compile" description="Link the binary and create a signature file for debug mode.">
 		<java classname="lejos.pc.tools.NXJLink" failonerror="true">
 			<classpath refid="lejos.pc" />
 			<arg value="--bootclasspath" />
@@ -101,7 +97,7 @@
 		</java>
 	</target>
 	
-	<target name="upload" depends="link" description="Upload the binary">
+	<target name="upload" depends="link" description="Upload the binary to the NXT brick.">
 		<java classname="lejos.pc.tools.NXJUpload" fork="true" failonerror="true">
 			<sysproperty key="nxj.home" file="${nxj.home}"/>
 			<jvmarg value="${d32Flag}" />
@@ -110,7 +106,7 @@
 		</java>
 	</target>
 	
-	<target name="uploadandrun" depends="link" description="Upload and run the binary">
+	<target name="uploadAndRun" depends="link" description="Upload and run the binary.">
 		<java classname="lejos.pc.tools.NXJUpload" fork="true" failonerror="true">
 			<sysproperty key="nxj.home" file="${nxj.home}"/>
 			<jvmarg value="${d32Flag}" />
@@ -120,7 +116,7 @@
 		</java>
 	</target>
 	
-	<target name="debuguploadandrun" depends="debuglink" description="Upload and run the binary">
+	<target name="debugUploadAndRun" depends="debugLink" description="Upload and run the binary in debug mode.">
 		<java classname="lejos.pc.tools.NXJUpload" fork="true" failonerror="true">
 			<sysproperty key="nxj.home" file="${nxj.home}"/>
 			<jvmarg value="${d32Flag}" />
@@ -130,7 +126,7 @@
 		</java>
 	</target>
 	
-	<target name="console" depends="debuguploadandrun" description="Run a console">
+	<target name="console" depends="debugUploadAndRun" description="Run the debug console.">
 		<sleep seconds="4" />
 		<java classname="lejos.pc.tools.NXJConsole" fork="true" failonerror="true">
 			<sysproperty key="nxj.home" file="${nxj.home}"/>
@@ -141,7 +137,7 @@
 		</java>
 	</target>
 	
-	<target name="consoleviewer" depends="debuguploadandrun" description="Run the GUI Console Viewer">
+	<target name="consoleViewer" depends="debugUploadAndRun" description="Run the GUI Console Viewer.">
 		<sleep seconds="4" />
 		<java classname="lejos.pc.tools.NXJConsoleViewer" fork="true" failonerror="true">
 			<sysproperty key="nxj.home" file="${nxj.home}"/>
@@ -152,7 +148,7 @@
 		</java>
 	</target>
 	
-	<target name="debugtool" description="Run the debug tool">
+	<target name="debugtool" description="Run the debug tool.">
 		  <input
 		    message="Exception class:"
 		    addproperty="class" />

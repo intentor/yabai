@@ -5,7 +5,6 @@ repositories {
     mavenCentral()
 }
 
-
 allprojects {
     apply plugin: 'java'
     apply plugin: 'checkstyle'
@@ -24,45 +23,10 @@ dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.11'
 }
 
-task link() {
-    group 'build'
-    description 'Link the binary and create a signature file.'
-    dependsOn build
-
-    doLast {
-        ant.java(classname: 'lejos.pc.tools.NXJLink', failonerror: true) {
-            classpath {
-                fileset(dir: nxjhome + '/lib/pc', includes: '**/*.jar')
-                fileset(dir: nxjhome + '/lib/nxt', includes: '**/*.jar')
-            }
-            arg(value: '--bootclasspath')
-            arg(path: nxjhome + '/lib/nxt')
-            arg(value: '--classpath')
-            arg(path: buildDir.toString() + '/classes')
-            arg(value: '--writeorder')
-            arg(value: 'LE')
-            arg(value: '-o')
-            arg(file: buildDir.toString() + '/' + project.name + '.nxj')
-            arg(value: '-od')
-            arg(file: buildDir.toString() + '/' + project.name + '.nxd')
-            arg(value: '-v')
-            arg(value: 'org.intentor.yabai.Main')
-        }
-    }
+ant.importBuild('config/ant/build.xml') {
+    antTaskName -> "nxj_${antTaskName}".toString()
 }
 
-task upload() {
-    description 'Uploads the program to a NXT brick.'
-    dependsOn link
-
-    doLast {
-        ant.java(classname: 'lejos.pc.tools.NXJUpload', fork: true, failonerror: true) {
-            classpath {
-                fileset(dir: nxjhome + '/lib/pc', includes: '**/*.jar')
-            }
-            sysproperty(key: 'nxj.home', file: nxjhome)
-            jvmarg(value: '-d32')
-            arg(value: buildDir.toString() + '/' + project.name + '.nxj')
-        }
-    }
-}
+tasks.matching {
+    task -> task.name.startsWith('nxj')
+}*.group = 'NXJ'
